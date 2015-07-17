@@ -5,4 +5,4 @@ install:
   - nuget install xunit.runners -Version 2.0.0 -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Release UploadcareCSharp.sln
-  - mono --runtime=v4.0 ./testrunner/xunit.runners.2.0.0/tools/xunit.console.exe ./UploadcareCSharp.Tests/bin/Release/UploadcareCSharp.Tests.dll
+  - mono --runtime=v4.0 ./testrunner/xunit.runners.2.0.1/tools/xunit.console.exe ./UploadcareCSharp.Tests/bin/Release/UploadcareCSharp.Tests.dll
