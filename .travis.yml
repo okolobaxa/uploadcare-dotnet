@@ -2,7 +2,5 @@ language: csharp
 solution: UploadcareCSharp.sln
 install:
   - nuget restore UploadcareCSharp.sln
-  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
 script:
   - xbuild /p:Configuration=Release UploadcareCSharp.sln
-  - mono --runtime=v4.0 ./testrunner/xunit.runners.1.9.2/tools/xunit.console.exe ./UploadcareCSharp.Tests/bin/Release/UploadcareCSharp.Tests.dll
