@@ -42,6 +42,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\EStoreType.cs" />
     <Compile Include="Url\CdnPathBuilder.cs" />
     <Compile Include="API\Client.cs" />
     <Compile Include="API\UploadcareFile.cs" />

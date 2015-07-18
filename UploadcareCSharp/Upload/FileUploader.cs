@@ -6,6 +6,7 @@ using System.Net.Http;
 using Uploadcare.API;
 using Uploadcare.Data;
 using Uploadcare.Url;
+using UploadcareCSharp.Enums;
 
 namespace Uploadcare.Upload
 {
@@ -36,7 +37,7 @@ namespace Uploadcare.Upload
 		/// </summary>
 		/// <returns> An Uploadcare file </returns>
 		/// <exception cref="UploadFailureException"> </exception>
-        public UploadcareFile Upload()
+        public UploadcareFile Upload(EStoreType storetype)
         {
             var url = Urls.UploadBase();
 
@@ -49,7 +50,7 @@ namespace Uploadcare.Upload
                 using (var content = new MultipartFormDataContent(boundary))
                 {
                     content.Add(new StringContent(_client.PublicKey), "UPLOADCARE_PUB_KEY");
-                    content.Add(new StringContent("auto"), "UPLOADCARE_STORE");
+                    content.Add(new StringContent(GetUploadType(storetype)), "UPLOADCARE_STORE");
                     content.Add(new StreamContent(System.IO.File.OpenRead(_file.FullName)), "file", _file.Name);
 
                     var buffer = content.ReadAsByteArrayAsync().Result;
@@ -69,6 +70,17 @@ namespace Uploadcare.Upload
             catch (Exception ex)
             {
                 throw new UploadFailureException();
+            }
+        }
+
+        private string GetUploadType(EStoreType type)
+        {
+            switch(type)
+            {
+                case EStoreType.DoNotStore: return "0";
+                case EStoreType.Store: return "1";
+                case EStoreType.Auto: return "auto";
+                default: throw new ArgumentException("");
             }
         }
 	}
