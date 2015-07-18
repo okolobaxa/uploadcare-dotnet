@@ -17,6 +17,8 @@ namespace Uploadcare.Upload
 	{
 		private readonly Client _client;
         private readonly FileInfo _file;
+        private readonly byte[] _bytes;
+        private readonly string _fileName;
 
 		/// <summary>
 		/// Creates a new uploader from a file on disk
@@ -28,7 +30,24 @@ namespace Uploadcare.Upload
 		{
 			_client = client;
 			_file = file;
+            _bytes = null;
+            _fileName = null;
 		}
+
+
+        /// <summary>
+        /// Creates a new uploader from binary data.
+        /// </summary>
+        /// <param name="client"> Uploadcare client </param>
+        /// <param name="bytes"> File contents as binary data </param>
+        /// <param name="filename"> Original filename </param>
+        public FileUploader(Client client, byte[] bytes, string filename)
+        {
+            _client = client;
+            _file = null;
+            _bytes = bytes;
+            _fileName = filename;
+        }
 
 		/// <summary>
 		/// Synchronously uploads the file to Uploadcare.
@@ -51,8 +70,10 @@ namespace Uploadcare.Upload
                 {
                     content.Add(new StringContent(_client.PublicKey), "UPLOADCARE_PUB_KEY");
                     content.Add(new StringContent(GetUploadType(storetype)), "UPLOADCARE_STORE");
-                    content.Add(new StreamContent(System.IO.File.OpenRead(_file.FullName)), "file", _file.Name);
-
+                    if (_file != null)
+                        content.Add(new StreamContent(File.OpenRead(_file.FullName)), "file", _file.Name);
+                    else
+                        content.Add(new ByteArrayContent(_bytes), "file", _fileName);
                     var buffer = content.ReadAsByteArrayAsync().Result;
                     using (var reqStream = request.GetRequestStream())
                     {

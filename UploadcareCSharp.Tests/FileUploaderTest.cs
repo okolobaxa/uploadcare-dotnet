@@ -33,6 +33,20 @@ namespace Uploadcare.Test
             Assert.NotNull(result.FileId);
             Assert.True(result.Stored);
         }
+
+        [Fact]
+        public void fileuploader_upload_bytes()
+        {
+            var _client = Client.DemoClient();
+            var file = new FileInfo("test.png");
+            var bytes = File.ReadAllBytes(file.FullName);
+
+            var uploader = new FileUploader(_client, bytes, file.Name);
+            var result = uploader.Upload(EStoreType.Store);
+
+            Assert.NotNull(result.FileId);
+            Assert.True(result.Stored);
+        }
 	}
 
 }
