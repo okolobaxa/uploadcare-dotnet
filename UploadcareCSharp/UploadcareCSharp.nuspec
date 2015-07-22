@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>UploadcareCSharp</id>
+        <version>0.1.0</version>
+        <authors>Anton Kheystver</authors>
+        <projectUrl>https://github.com/okolobaxa/uploadcare-csharp</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>C# library for Uploadcare. 
+https://uploadcare.com</description>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="7.0.1" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\UploadcareCSharp.dll" target="lib\UploadcareCSharp.dll" />
+    </files>
+</package>
