@@ -3,12 +3,13 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using Uploadcare.API;
-using Uploadcare.Data;
-using Uploadcare.Url;
+using UploadcareCSharp.API;
+using UploadcareCSharp.Data;
 using UploadcareCSharp.Enums;
+using UploadcareCSharp.Exceptions;
+using UploadcareCSharp.Url;
 
-namespace Uploadcare.Upload
+namespace UploadcareCSharp.Upload
 {
 	/// <summary>
 	/// Uploadcare uploader for files and binary data.
@@ -25,7 +26,7 @@ namespace Uploadcare.Upload
 		/// (not to be confused with a file resource from Uploadcare API).
 		/// </summary>
 		/// <param name="client"> Uploadcare client </param>
-		/// <param name="file"> UploadcareFile on disk </param>
+		/// <param name="file"> File on disk </param>
         public FileUploader(Client client, FileInfo file)
 		{
 			_client = client;
@@ -33,7 +34,6 @@ namespace Uploadcare.Upload
             _bytes = null;
             _fileName = null;
 		}
-
 
         /// <summary>
         /// Creates a new uploader from binary data.
@@ -94,7 +94,7 @@ namespace Uploadcare.Upload
             }
         }
 
-        private string GetUploadType(EStoreType type)
+        private static string GetUploadType(EStoreType type)
         {
             switch(type)
             {

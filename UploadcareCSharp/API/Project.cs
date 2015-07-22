@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Uploadcare.Data;
+using UploadcareCSharp.Data;
 
-namespace Uploadcare.API
+namespace UploadcareCSharp.API
 {
 	/// <summary>
 	/// The resource for project, associated with the connecting account.

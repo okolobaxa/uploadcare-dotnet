@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using Moq;
-using Uploadcare.API;
-using Uploadcare.Url;
+using UploadcareCSharp.API;
+using UploadcareCSharp.Url;
 using Xunit;
 
 namespace Uploadcare.Test

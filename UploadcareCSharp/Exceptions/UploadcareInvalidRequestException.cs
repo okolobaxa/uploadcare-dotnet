@@ -1,4 +1,4 @@
-﻿namespace Uploadcare.Exceptions
+﻿namespace UploadcareCSharp.Exceptions
 {
 	/// <summary>
 	/// Error produced in case the http request sent to the Uploadcare API was invalid.

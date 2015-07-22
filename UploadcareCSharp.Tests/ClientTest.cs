@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using Uploadcare.API;
-using Uploadcare.Upload;
+using UploadcareCSharp.API;
 using UploadcareCSharp.Enums;
+using UploadcareCSharp.Upload;
 using Xunit;
 
-namespace Uploadcare.Test
+namespace UploadcareCSharp.Tests
 {
 	public class ClientTest
     {
@@ -14,8 +14,8 @@ namespace Uploadcare.Test
         [Fact]
 		public void client_getfile_assert()
         {
-            var _client = Client.DemoClient();
-            var result = _client.GetFile(new Guid(FileId));
+            var client = Client.DemoClient();
+            var result = client.GetFile(new Guid(FileId));
 
             Assert.NotNull(result.FileId);
         }
@@ -23,8 +23,8 @@ namespace Uploadcare.Test
         [Fact]
         public void client_project_assert()
         {
-            var _client = Client.DemoClient();
-            var result = _client.Project;
+            var client = Client.DemoClient();
+            var result = client.GetProject();
 
             Assert.NotNull(result);
             Assert.True(!string.IsNullOrEmpty(result.Name));
@@ -33,14 +33,14 @@ namespace Uploadcare.Test
         [Fact]
         public void client_savefile_assert()
         {
-            var _client = Client.DemoClient();
+            var client = Client.DemoClient();
             var file = new FileInfo("test.png");
 
-            var uploader = new FileUploader(_client, file);
+            var uploader = new FileUploader(client, file);
             var uploadedFileInfo = uploader.Upload(EStoreType.Auto);
 
-            _client.SaveFile(uploadedFileInfo.FileId);
-            var result = _client.GetFile(uploadedFileInfo.FileId);
+            client.SaveFile(uploadedFileInfo.FileId);
+            var result = client.GetFile(uploadedFileInfo.FileId);
 
             Assert.NotNull(result.FileId);
             Assert.True(result.Stored);
@@ -49,14 +49,14 @@ namespace Uploadcare.Test
         [Fact]
         public void client_deletefile_assert()
         {
-            var _client = Client.DemoClient();
+            var client = Client.DemoClient();
             var file = new FileInfo("test.png");
 
-            var uploader = new FileUploader(_client, file);
+            var uploader = new FileUploader(client, file);
             var uploadedFileInfo = uploader.Upload(EStoreType.Auto);
 
-            _client.DeleteFile(uploadedFileInfo.FileId);
-            var result = _client.GetFile(uploadedFileInfo.FileId);
+            client.DeleteFile(uploadedFileInfo.FileId);
+            var result = client.GetFile(uploadedFileInfo.FileId);
 
             Assert.NotNull(result.FileId);
             Assert.True(result.Removed);

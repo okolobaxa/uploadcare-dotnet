@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Uploadcare.Exceptions
+namespace UploadcareCSharp.Exceptions
 {
 	/// <summary>
 	/// An exception thrown in cases of network failure.

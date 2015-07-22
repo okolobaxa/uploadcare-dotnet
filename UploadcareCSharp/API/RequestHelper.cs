@@ -2,9 +2,9 @@
 using System.IO;
 using System.Net;
 using Newtonsoft.Json;
-using Uploadcare.Exceptions;
+using UploadcareCSharp.Exceptions;
 
-namespace Uploadcare.API
+namespace UploadcareCSharp.API
 {
 	/// <summary>
 	/// A helper class for doing API calls to the Uploadcare API. Supports API version 0.3.
@@ -55,7 +55,7 @@ namespace Uploadcare.API
 	    /// Executes the request et the Uploadcare API and return the HTTP Response object.
 	    /// 
 	    /// The existence of this method(and it's return type) enables the end user to extend the functionality of the
-	    /// Uploadcare API client by creating a subclass of <seealso cref="Uploadcare.API.Client"/>.
+	    /// Uploadcare API client by creating a subclass of <seealso cref="Client"/>.
 	    /// </summary>
 	    /// <param name="request"> request to be sent to the API </param>
         /// <param name="includeApiHeaders">TRUE if the default API headers should be set</param>

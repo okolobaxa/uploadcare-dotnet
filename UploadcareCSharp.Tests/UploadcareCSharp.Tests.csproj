@@ -8,7 +8,7 @@
     <ProjectGuid>{E6CE66D7-001A-4B1C-944E-3DA8F4C4277E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>uploadcare_csharp.Tests</RootNamespace>
+    <RootNamespace>UploadcareCSharp.Tests</RootNamespace>
     <AssemblyName>UploadcareCSharp.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

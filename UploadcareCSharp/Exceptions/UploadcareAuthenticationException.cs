@@ -1,4 +1,4 @@
-﻿namespace Uploadcare.Exceptions
+﻿namespace UploadcareCSharp.Exceptions
 {
 	/// <summary>
 	///  An authentication error returned by the uploadcare API

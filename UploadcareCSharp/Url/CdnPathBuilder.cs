@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Text;
-using Uploadcare.API;
+using UploadcareCSharp.API;
 
-namespace Uploadcare.Url
+namespace UploadcareCSharp.Url
 {
 	public sealed class CdnPathBuilder
 	{

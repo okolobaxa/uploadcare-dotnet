@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Net;
-using Uploadcare.Data;
-using Uploadcare.Url;
+using UploadcareCSharp.Data;
+using UploadcareCSharp.Url;
 
-namespace Uploadcare.API
+namespace UploadcareCSharp.API
 {
 	/// <summary>
 	/// Uploadcare API client.
 	/// 
-	/// Provides simple access to {@code UploadcareFile} and {@code Project} resources.
+	/// Provides simple access to UploadcareFile and Project resources.
 	/// </summary>
 	public sealed class Client
 	{
@@ -23,7 +23,7 @@ namespace Uploadcare.API
 		/// </summary>
 		/// <param name="publicKey"> Public key </param>
 		/// <param name="privateKey"> Private key </param>
-		/// <param name="simpleAuth"> If {@code false}, HMAC-based authentication is used </param>
+		/// <param name="simpleAuth"> If false, HMAC-based authentication is used </param>
 		public Client(string publicKey, string privateKey, bool simpleAuth = true)
 		{
 			_publicKey = publicKey;
@@ -70,9 +70,9 @@ namespace Uploadcare.API
 		}
 
 		/// <summary>
-		/// Returns {@code true}, if simple authentication is used.
+		/// Returns true, if simple authentication is used.
 		/// </summary>
-		/// <returns> {@code true}, if simple authentication is used, {@code false} otherwise </returns>
+		/// <returns> true, if simple authentication is used, false otherwise </returns>
 		public bool SimpleAuth
 		{
 			get
@@ -86,26 +86,23 @@ namespace Uploadcare.API
             return _requestHelper;
         }
 
-		/// <summary>
-		/// Requests project info from the API.
-		/// </summary>
-		/// <returns> Project resource </returns>
-		public Project Project
-		{
-			get
-			{
-				var url = Urls.ApiProject();
+	    /// <summary>
+	    /// Requests project info from the API.
+	    /// </summary>
+	    /// <returns> Project resource </returns>
+	    public Project GetProject()
+	    {
+	        var url = Urls.ApiProject();
 
-                var request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "GET";
+	        var request = (HttpWebRequest) WebRequest.Create(url);
+	        request.Method = "GET";
 
-                var result = _requestHelper.ExecuteQuery(request, true, new ProjectData());
+	        var result = _requestHelper.ExecuteQuery(request, true, new ProjectData());
 
-			    return new Project(this, result);
-			}
-		}
+	        return new Project(this, result);
+	    }
 
-		/// <summary>
+	    /// <summary>
 		/// Requests file data.
 		/// </summary>
 		/// <param name="fileId"> Resource UUID </param>
