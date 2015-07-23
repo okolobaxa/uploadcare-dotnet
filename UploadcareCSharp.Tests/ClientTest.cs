@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using UploadcareCSharp.API;
 using UploadcareCSharp.Enums;
 using UploadcareCSharp.Upload;
@@ -61,6 +62,16 @@ namespace UploadcareCSharp.Tests
             Assert.NotNull(result.FileId);
             Assert.True(result.Removed);
         }
+
+        [Fact]
+	    public void client_getfiles_assert()
+	    {
+	        var client = Client.DemoClient();
+	        
+            var count = client.GetFiles().AsIterable().Count();
+
+            Assert.True(count > 0);
+	    }
 	}
 
 }

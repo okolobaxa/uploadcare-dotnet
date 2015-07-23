@@ -102,7 +102,16 @@ namespace UploadcareCSharp.API
 	        return new Project(this, result);
 	    }
 
-	    /// <summary>
+        /// <summary>
+        /// Begins to build a request for uploaded files for the current account.
+        /// </summary>
+        /// <returns> File resource request builder </returns> 
+        public FilesQueryBuilder GetFiles()
+        {
+            return new FilesQueryBuilder(this);
+        }
+
+        /// <summary>
 		/// Requests file data.
 		/// </summary>
 		/// <param name="fileId"> Resource UUID </param>

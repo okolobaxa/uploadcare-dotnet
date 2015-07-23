@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
 using Newtonsoft.Json;
+using UploadcareCSharp.Data;
 using UploadcareCSharp.Exceptions;
+using UploadcareCSharp.Url.UrlParameters;
 
 namespace UploadcareCSharp.API
 {
@@ -19,6 +26,12 @@ namespace UploadcareCSharp.API
 		{
 			_client = client;
 		}
+
+        public IEnumerable<T> ExecutePaginatedQuery<T, U>(Uri url, List<IUrlParameter> urlParameters, 
+            bool includeApiHeaders, IPageData<U> pageData, IDataWrapper<T, U> dataWrapper)
+	    {
+            return new FilesEnumator<T, U>(this, url, urlParameters, includeApiHeaders, pageData, new FileDataWrapper<T,U>()); 
+	    }
 
         public T ExecuteQuery<T>(HttpWebRequest request, bool includeApiHeaders, T dataClass)
 	    {
@@ -128,5 +141,4 @@ namespace UploadcareCSharp.API
             return reader.ReadToEnd();
         }
     }
-
 }
