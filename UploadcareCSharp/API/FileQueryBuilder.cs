@@ -7,16 +7,16 @@ using UploadcareCSharp.Url.UrlParameters;
 
 namespace UploadcareCSharp.API
 {
-    public class FilesQueryBuilder : IPaginatedQueryBuilder<UploadcareFile>
+    public class FilesQueryBuilder : IPaginatedQueryBuilder<FileData>
     {
 
         private Client client;
         private List<IUrlParameter> parameters = new List<IUrlParameter>();
 
-        /**
-     * Initializes a new builder for the given client.
-     */
 
+        /// <summary>
+        /// Initializes a new builder for the given client.
+        /// </summary>
         public FilesQueryBuilder(Client client)
         {
             this.client = client;
@@ -46,16 +46,17 @@ namespace UploadcareCSharp.API
             return this;
         }
 
-        public IEnumerable<UploadcareFile> AsIterable()
+        public IEnumerable<FileData> AsIterable()
         {
             var url = Urls.ApiFiles();
+            var requestHelper = client.GetRequestHelper();
 
-            RequestHelper requestHelper = client.GetRequestHelper();
+            var result = requestHelper.ExecutePaginatedQuery<FileData, FilePageData>(url, parameters, true, new FilePageData(), new FileDataWrapper(client));
 
-            return requestHelper.ExecutePaginatedQuery(url, parameters, true, new FilePageData());
+            return result;
         }
 
-        public List<UploadcareFile> AsList()
+        public List<FileData> AsList()
         {
 
             return AsIterable().ToList();

@@ -5,7 +5,7 @@ using UploadcareCSharp.API;
 using UploadcareCSharp.Url;
 using Xunit;
 
-namespace Uploadcare.Test
+namespace UploadcareCSharp.Tests
 {
 	public class CdnPathBuilderTest
 	{

@@ -64,13 +64,20 @@ namespace UploadcareCSharp.Tests
         }
 
         [Fact]
-	    public void client_getfiles_assert()
+	    public void client_getfiles_iterable()
 	    {
 	        var client = Client.DemoClient();
-	        
-            var count = client.GetFiles().AsIterable().Count();
+            var count = 0;
+            
+            foreach (var file in client.GetFiles().Stored(true).AsIterable())
+            {
+                Assert.NotNull(file);
+                count++;
+                if (count == 150)
+                    break;
+            }
 
-            Assert.True(count > 0);
+            Assert.True(count == 150);
 	    }
 	}
 
