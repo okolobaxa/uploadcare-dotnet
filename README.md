@@ -10,7 +10,7 @@ Supported features:
 - Part of file and project API v0.3
 - Paginated resources fetched as `List<T>`
 - CDN path builder
-- File uploads from disk, byteArray
+- File uploads from disk, byteArray, and URL
 
 ## Nuget
 Latest stable version is available from [NuGet Gallery](https://www.nuget.org/packages/UploadcareCSharp/)
