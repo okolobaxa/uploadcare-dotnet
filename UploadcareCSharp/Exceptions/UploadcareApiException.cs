@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Uploadcare.Exceptions
+namespace UploadcareCSharp.Exceptions
 {
 
 	/// <summary>

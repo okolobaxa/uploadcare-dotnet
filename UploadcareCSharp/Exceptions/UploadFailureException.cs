@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Uploadcare.Upload
+namespace UploadcareCSharp.Exceptions
 {
 	public class UploadFailureException : Exception
 	{

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Drawing;
 using Moq;
-using Uploadcare.API;
-using Uploadcare.Url;
+using UploadcareCSharp.API;
+using UploadcareCSharp.Url;
 using Xunit;
 
-namespace Uploadcare.Test
+namespace UploadcareCSharp.Tests
 {
 	public class CdnPathBuilderTest
 	{
-		private const string FileId = "27c7846b-a019-4516-a5e4-de635f822161";
+		private const string FILE_ID = "27c7846b-a019-4516-a5e4-de635f822161";
 		private CdnPathBuilder _builder;
 
 
@@ -17,30 +17,30 @@ namespace Uploadcare.Test
 		public void cdnpathbuilder_fileUrl_assert()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(new Guid(FileId));
+            fileMoq.Setup(x => x.FileId).Returns(new Guid(FILE_ID));
 
             _builder = new CdnPathBuilder(fileMoq.Object);
-			string path = _builder.Build();
-			Assert.Equal("/" + FileId + "/", path);
+			var path = _builder.Build();
+			Assert.Equal("/" + FILE_ID + "/", path);
 		}
 
         [Fact]
         public void cdnpathbuilder_allOperations_assert()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(new Guid(FileId));
+            fileMoq.Setup(x => x.FileId).Returns(new Guid(FILE_ID));
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 
-			string path = _builder.Crop(100, 110).CropColor(120, 130, Color.Black).CropCenter(140, 150).CropCenterColor(160, 170, Color.Red).Resize(100, 110).ResizeWidth(120).ResizeHeight(130).ScaleCrop(100, 110).ScaleCropCenter(120, 130).Flip().Grayscale().Invert().Mirror().Build();
-			Assert.Equal("/" + FileId + "/-/crop/100x110" + "/-/crop/120x130/000000" + "/-/crop/140x150/center" + "/-/crop/160x170/center/ff0000" + "/-/resize/100x110" + "/-/resize/120x" + "/-/resize/x130" + "/-/scale_crop/100x110" + "/-/scale_crop/120x130/center" + "/-/effect/flip" + "/-/effect/grayscale" + "/-/effect/invert" + "/-/effect/mirror" + "/", path);
+			var path = _builder.Crop(100, 110).CropColor(120, 130, Color.Black).CropCenter(140, 150).CropCenterColor(160, 170, Color.Red).Resize(100, 110).ResizeWidth(120).ResizeHeight(130).ScaleCrop(100, 110).ScaleCropCenter(120, 130).Flip().Grayscale().Invert().Mirror().Build();
+			Assert.Equal("/" + FILE_ID + "/-/crop/100x110" + "/-/crop/120x130/000000" + "/-/crop/140x150/center" + "/-/crop/160x170/center/ff0000" + "/-/resize/100x110" + "/-/resize/120x" + "/-/resize/x130" + "/-/scale_crop/100x110" + "/-/scale_crop/120x130/center" + "/-/effect/flip" + "/-/effect/grayscale" + "/-/effect/invert" + "/-/effect/mirror" + "/", path);
 		}
 
         [Fact]
         public void cdnpathbuilder_dimensionGuard_fail()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(new Guid(FileId));
+            fileMoq.Setup(x => x.FileId).Returns(new Guid(FILE_ID));
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 
@@ -68,7 +68,7 @@ namespace Uploadcare.Test
         public void cdnpathbuilder_dimensionsGuard_fail()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(new Guid(FileId));
+            fileMoq.Setup(x => x.FileId).Returns(new Guid(FILE_ID));
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 

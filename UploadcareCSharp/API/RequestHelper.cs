@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using Newtonsoft.Json;
-using Uploadcare.Exceptions;
+using UploadcareCSharp.Data;
+using UploadcareCSharp.Exceptions;
+using UploadcareCSharp.Url.UrlParameters;
 
-namespace Uploadcare.API
+namespace UploadcareCSharp.API
 {
 	/// <summary>
 	/// A helper class for doing API calls to the Uploadcare API. Supports API version 0.3.
@@ -19,6 +22,12 @@ namespace Uploadcare.API
 		{
 			_client = client;
 		}
+
+        public IEnumerable<T> ExecutePaginatedQuery<T, TU, TK>(Uri url, List<IUrlParameter> urlParameters,
+            bool includeApiHeaders, TK pageData, IDataWrapper<T, TU> dataWrapper)
+	    {
+            return new FilesEnumator<T, TU, TK>(this, url, urlParameters, includeApiHeaders, pageData, dataWrapper); 
+	    }
 
         public T ExecuteQuery<T>(HttpWebRequest request, bool includeApiHeaders, T dataClass)
 	    {
@@ -55,7 +64,7 @@ namespace Uploadcare.API
 	    /// Executes the request et the Uploadcare API and return the HTTP Response object.
 	    /// 
 	    /// The existence of this method(and it's return type) enables the end user to extend the functionality of the
-	    /// Uploadcare API client by creating a subclass of <seealso cref="Uploadcare.API.Client"/>.
+	    /// Uploadcare API client by creating a subclass of <seealso cref="Client"/>.
 	    /// </summary>
 	    /// <param name="request"> request to be sent to the API </param>
         /// <param name="includeApiHeaders">TRUE if the default API headers should be set</param>
@@ -128,5 +137,4 @@ namespace Uploadcare.API
             return reader.ReadToEnd();
         }
     }
-
 }

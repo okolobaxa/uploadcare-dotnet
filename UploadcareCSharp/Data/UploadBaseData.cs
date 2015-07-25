@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Uploadcare.Data
+namespace UploadcareCSharp.Data
 {
 	public class UploadBaseData
 	{

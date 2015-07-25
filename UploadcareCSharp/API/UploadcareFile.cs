@@ -1,8 +1,8 @@
 ﻿using System;
-using Uploadcare.Data;
-using Uploadcare.Url;
+using UploadcareCSharp.Data;
+using UploadcareCSharp.Url;
 
-namespace Uploadcare.API
+namespace UploadcareCSharp.API
 {
 	/// <summary>
 	/// The main Uploadcare resource, represents a user-uploaded file.

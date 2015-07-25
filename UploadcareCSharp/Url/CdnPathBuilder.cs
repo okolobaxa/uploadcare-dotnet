@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Text;
-using Uploadcare.API;
+using UploadcareCSharp.API;
 
-namespace Uploadcare.Url
+namespace UploadcareCSharp.Url
 {
 	public sealed class CdnPathBuilder
 	{
@@ -19,7 +19,7 @@ namespace Uploadcare.Url
 			_sb.Append(uploadcareFile.FileId);
 		}
 
-		private void DimensionGuard(int dim)
+		private static void DimensionGuard(int dim)
 		{
 			if (dim < 1 || dim > 1024)
 			{
@@ -27,7 +27,7 @@ namespace Uploadcare.Url
 			}
 		}
 
-		private void DimensionsGuard(int width, int height)
+		private static void DimensionsGuard(int width, int height)
 		{
 			DimensionGuard(width);
 			DimensionGuard(height);
@@ -200,7 +200,5 @@ namespace Uploadcare.Url
 		{
 			return _sb.Append("/").ToString();
 		}
-
 	}
-
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Uploadcare.Data
+namespace UploadcareCSharp.Data
 {
 	public class FileData
 	{

@@ -1,20 +1,19 @@
 ﻿using System;
 
-namespace Uploadcare.Url
+namespace UploadcareCSharp.Url
 {
 	public static class Urls
 	{
-
-		private const string Api_Base = "https://api.uploadcare.com";
-		private const string Cdn_Base = "https://ucarecdn.com";
-		private const string Upload_Base = "https://upload.uploadcare.com";
+		private const string API_BASE = "https://api.uploadcare.com";
+		private const string CDN_BASE = "https://ucarecdn.com";
+		private const string UPLOAD_BASE = "https://upload.uploadcare.com";
 
 		/// <summary>
 		/// Creates a URL to a project resource.
 		/// </summary>
 		public static Uri ApiProject()
 		{
-			return new Uri(Api_Base + "/project/");
+			return new Uri(API_BASE + "/project/");
 		}
 
 		/// <summary>
@@ -24,7 +23,7 @@ namespace Uploadcare.Url
 		/// </param>
 		public static Uri ApiFile(Guid fileId)
 		{
-		   return new Uri(Api_Base + "/files/" + fileId + "/");
+		   return new Uri(API_BASE + "/files/" + fileId + "/");
 		}
 
 		/// <summary>
@@ -34,7 +33,7 @@ namespace Uploadcare.Url
 		/// </param>
 		public static Uri ApiFileStorage(Guid fileId)
 		{
-            return new Uri(Api_Base + "/files/" + fileId + "/storage/");
+            return new Uri(API_BASE + "/files/" + fileId + "/storage/");
 		}
 
 		/// <summary>
@@ -42,7 +41,7 @@ namespace Uploadcare.Url
 		/// </summary>
 		public static Uri ApiFiles()
 		{
-			return new Uri(Api_Base + "/files/");
+			return new Uri(API_BASE + "/files/");
 		}
 
 		/// <summary>
@@ -51,7 +50,7 @@ namespace Uploadcare.Url
 		/// <param name="builder"> Configured CDN path builder </param>
 		public static Uri Cdn(CdnPathBuilder builder)
 		{
-			return new Uri(Cdn_Base + builder.Build());
+			return new Uri(CDN_BASE + builder.Build());
 		}
 
 		/// <summary>
@@ -59,7 +58,7 @@ namespace Uploadcare.Url
 		/// </summary>
 		public static Uri UploadBase()
 		{
-            return new Uri(Upload_Base + "/base/");
+            return new Uri(UPLOAD_BASE + "/base/");
 		}
 
 		/// <summary>
@@ -70,7 +69,7 @@ namespace Uploadcare.Url
 		/// </param>
 		public static Uri UploadFromUrl(string sourceUrl, string pubKey)
 		{
-		    var path = Upload_Base + "/from_url/" + "?source_url=" + sourceUrl + "&pub_key=" + pubKey;
+		    var path = UPLOAD_BASE + "/from_url/" + "?source_url=" + sourceUrl + "&pub_key=" + pubKey;
             
             var builder = new UriBuilder(new Uri(path));
 
@@ -84,13 +83,11 @@ namespace Uploadcare.Url
 		/// </param>
 		public static Uri UploadFromUrlStatus(string token)
 		{
-            var path = Upload_Base + "/from_url/status/" + "?token=" + token;
+            var path = UPLOAD_BASE + "/from_url/status/" + "?token=" + token;
 
             var builder = new UriBuilder(new Uri(path));
 
             return builder.Uri;
 		}
-
 	}
-
 }

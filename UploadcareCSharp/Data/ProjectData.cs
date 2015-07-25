@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Uploadcare.Data
+namespace UploadcareCSharp.Data
 {
     public class ProjectData
     {
