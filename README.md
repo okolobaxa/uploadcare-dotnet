@@ -1,7 +1,7 @@
 uploadcare-csharp
 ===============
 
-[![Build Status](https://travis-ci.org/okolobaxa/uploadcare-csharp.svg)](https://travis-ci.org/okolobaxa/uploadcare-csharp) [![Build status](https://ci.appveyor.com/api/projects/status/4fa72wwet494g2e5/branch/master?svg=true)](https://ci.appveyor.com/project/okolobaxa/uploadcare-csharp/branch/master)
+[![Build Status](https://travis-ci.org/okolobaxa/uploadcare-csharp.svg)](https://travis-ci.org/okolobaxa/uploadcare-csharp)
 
 This is a C# library for Uploadcare.
 
