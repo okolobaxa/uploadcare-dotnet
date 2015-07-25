@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>UploadcareCSharp</id>
-        <version>0.1.0</version>
+        <version>0.2.0</version>
         <authors>Anton Kheystver</authors>
         <projectUrl>https://github.com/okolobaxa/uploadcare-csharp</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>C# library for Uploadcare. 
 https://uploadcare.com</description>
+        <releaseNotes>Add implementing IEnumerable for files resource</releaseNotes>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="7.0.1" />
         </dependencies>
