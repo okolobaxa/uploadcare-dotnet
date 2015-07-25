@@ -7,5 +7,4 @@ namespace UploadcareCSharp.Upload
 	{
         UploadcareFile Upload(EStoreType type);
 	}
-
 }

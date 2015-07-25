@@ -23,10 +23,10 @@ namespace UploadcareCSharp.API
 			_client = client;
 		}
 
-        public IEnumerable<TFileData> ExecutePaginatedQuery<TFileData, TFilePageData>(Uri url, List<IUrlParameter> urlParameters,
-            bool includeApiHeaders, TFilePageData pageData, IDataWrapper<UploadcareFile, TFileData> dataWrapper)
+        public IEnumerable<T> ExecutePaginatedQuery<T, TU, TK>(Uri url, List<IUrlParameter> urlParameters,
+            bool includeApiHeaders, TK pageData, IDataWrapper<T, TU> dataWrapper)
 	    {
-            return new FilesEnumator<TFileData, TFilePageData>(this, url, urlParameters, includeApiHeaders, pageData); 
+            return new FilesEnumator<T, TU, TK>(this, url, urlParameters, includeApiHeaders, pageData, dataWrapper); 
 	    }
 
         public T ExecuteQuery<T>(HttpWebRequest request, bool includeApiHeaders, T dataClass)

@@ -4,14 +4,14 @@ namespace UploadcareCSharp.API
 {
     public interface IPaginatedQueryBuilder<T>
     {
-        /**
-     * Returns a resource iterable for lazy loading.
-     */
+        /// <summary>
+        /// Returns a resource iterable for lazy loading.
+        /// </summary>
         IEnumerable<T> AsIterable();
 
-        /**
-     * Iterates through all resources and returns a complete list.
-     */
+        /// <summary>
+        /// Iterates through all resources and returns a complete list.
+        /// </summary>
         List<T> AsList();
     }
 }

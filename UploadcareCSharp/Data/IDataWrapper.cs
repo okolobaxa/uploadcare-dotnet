@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UploadcareCSharp.Data
+﻿namespace UploadcareCSharp.Data
 {
     public interface IDataWrapper<T, U>
     {
-
         T Wrap(U data);
-
     }
 }

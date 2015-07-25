@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using UploadcareCSharp.API;
 using UploadcareCSharp.Enums;
 using UploadcareCSharp.Upload;
@@ -10,13 +8,16 @@ namespace UploadcareCSharp.Tests
 {
 	public class ClientTest
     {
-        private const string FileId = "b0534d24-1114-425b-87cb-11595b6b9119";
-
         [Fact]
 		public void client_getfile_assert()
         {
             var client = Client.DemoClient();
-            var result = client.GetFile(new Guid(FileId));
+            var file = new FileInfo("test.png");
+
+            var uploader = new FileUploader(client, file);
+            var uploadedFileInfo = uploader.Upload(EStoreType.Auto);
+
+            var result = client.GetFile(uploadedFileInfo.FileId);
 
             Assert.NotNull(result.FileId);
         }

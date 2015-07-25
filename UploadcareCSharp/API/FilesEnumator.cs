@@ -9,29 +9,27 @@ using UploadcareCSharp.Url.UrlParameters;
 
 namespace UploadcareCSharp.API
 {
-    internal class FilesEnumator<TFileData, TFilePageData> : IEnumerator<TFileData>, IEnumerable<TFileData>
+    internal class FilesEnumator<T, TU, TK> : IEnumerator<T>, IEnumerable<T>
     {
-        /// <summary>
-        /// T - UploadcareFile
-        /// U - FilePageData
-        /// </summary>
         private readonly RequestHelper _requestHelper;
         private readonly Uri _url;
         private readonly List<IUrlParameter> _urlParameters;
         private readonly bool _includeApiHeaders;
-        private readonly TFilePageData _dataClass;
+        private readonly TK _dataClass;
+        private readonly IDataWrapper<T, TU> _dataWrapper;
         private int _page;
         private bool _more;
-        private IEnumerator<TFileData> _pageIterator;
+        private IEnumerator<TU> _pageIterator;
 
         public FilesEnumator(RequestHelper requestHelper, Uri url, List<IUrlParameter> urlParameters,
-            bool includeApiHeaders, TFilePageData dataClass)
+            bool includeApiHeaders, TK dataClass, IDataWrapper<T, TU> dataWrapper)
         {
             _requestHelper = requestHelper;
             _url = url;
             _urlParameters = urlParameters;
             _includeApiHeaders = includeApiHeaders;
             _dataClass = dataClass;
+            _dataWrapper = dataWrapper;
 
             GetNext();
         }
@@ -50,8 +48,8 @@ namespace UploadcareCSharp.API
             request.Method = "GET";
 
             var pageData = _requestHelper.ExecuteQuery(request, _includeApiHeaders, _dataClass);
-            _more = ((IPageData<TFileData>)pageData).HasMore();
-            _pageIterator = ((IPageData<TFileData>)pageData).GetResults().GetEnumerator();
+            _more = ((IPageData<TU>)pageData).HasMore();
+            _pageIterator = ((IPageData<TU>)pageData).GetResults().GetEnumerator();
             _pageIterator.MoveNext();
         }
 
@@ -78,11 +76,11 @@ namespace UploadcareCSharp.API
         {
         }
 
-        public TFileData Current
+        public T Current
         {
             get
             {
-                return _pageIterator.Current;
+                return _dataWrapper.Wrap(_pageIterator.Current);
             }
         }
 
@@ -94,7 +92,7 @@ namespace UploadcareCSharp.API
             }
         }
 
-        public IEnumerator<TFileData> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             return this;
         }

@@ -89,7 +89,5 @@ namespace UploadcareCSharp.Url
 
             return builder.Uri;
 		}
-
 	}
-
 }

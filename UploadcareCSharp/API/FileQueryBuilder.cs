@@ -7,11 +7,10 @@ using UploadcareCSharp.Url.UrlParameters;
 
 namespace UploadcareCSharp.API
 {
-    public class FilesQueryBuilder : IPaginatedQueryBuilder<FileData>
+    public class FilesQueryBuilder : IPaginatedQueryBuilder<UploadcareFile>
     {
-
-        private Client client;
-        private List<IUrlParameter> parameters = new List<IUrlParameter>();
+        private readonly Client _client;
+        private readonly List<IUrlParameter> _parameters = new List<IUrlParameter>();
 
 
         /// <summary>
@@ -19,46 +18,41 @@ namespace UploadcareCSharp.API
         /// </summary>
         public FilesQueryBuilder(Client client)
         {
-            this.client = client;
+            _client = client;
         }
 
-        /**
-     * Adds a filter for removed files.
-     *
-     * @param removed If {@code true}, accepts removed files, otherwise declines them.
-     */
-
+        /// <summary>
+        /// Adds a filter for removed files.
+        /// </summary>
+        /// <param name="removed"> If true, accepts removed files, otherwise declines them </param>
         public FilesQueryBuilder Removed(bool removed)
         {
-            parameters.Add(new FilesRemovedParameter(removed));
+            _parameters.Add(new FilesRemovedParameter(removed));
             return this;
         }
 
-        /**
-     * Adds a filter for stored files.
-     *
-     * @param stored If {@code true}, accepts stored files, otherwise declines them.
-     */
-
+        /// <summary>
+        /// Adds a filter for stored files.
+        /// </summary>
+        /// <param name="stored"> If true, accepts stored files, otherwise declines them </param>
         public FilesQueryBuilder Stored(bool stored)
         {
-            parameters.Add(new FilesStoredParameter(stored));
+            _parameters.Add(new FilesStoredParameter(stored));
             return this;
         }
 
-        public IEnumerable<FileData> AsIterable()
+        public IEnumerable<UploadcareFile> AsIterable()
         {
             var url = Urls.ApiFiles();
-            var requestHelper = client.GetRequestHelper();
+            var requestHelper = _client.GetRequestHelper();
 
-            var result = requestHelper.ExecutePaginatedQuery<FileData, FilePageData>(url, parameters, true, new FilePageData(), new FileDataWrapper(client));
+            var result = requestHelper.ExecutePaginatedQuery(url, _parameters, true, new FilePageData(), new FileDataWrapper(_client));
 
             return result;
         }
 
-        public List<FileData> AsList()
+        public List<UploadcareFile> AsList()
         {
-
             return AsIterable().ToList();
         }
     }
