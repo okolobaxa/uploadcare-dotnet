@@ -8,6 +8,7 @@ This is a C# library for Uploadcare.
 Supported features:
 
 - Part of file and project API v0.3
+- Paginated resources fetched as List<T>
 - CDN path builder
 - File uploads from disk, byteArray
 
