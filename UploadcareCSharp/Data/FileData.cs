@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace UploadcareCSharp.Data
 {
-	public class FileData
+	internal class FileData
 	{
         [JsonProperty("uuid")]
         public Guid Uuid { get; set; }

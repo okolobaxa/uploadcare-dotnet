@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using UploadcareCSharp.API;
-using UploadcareCSharp.Enums;
 using UploadcareCSharp.Upload;
 using Xunit;
 
@@ -9,29 +8,15 @@ namespace UploadcareCSharp.Tests
 	public class FileUploaderTest
     {
         [Fact]
-        public void fileuploader_upload_notstore()
+        public void fileuploader_upload_assert()
         {
             var client = Client.DemoClient();
             var file = new FileInfo("test.png");
 
             var uploader = new FileUploader(client, file);
-            var result = uploader.Upload(EStoreType.DoNotStore);
+            var result = uploader.Upload();
 
             Assert.NotNull(result.FileId);
-            Assert.False(result.Stored);
-        }
-
-        [Fact]
-        public void fileuploader_upload_store()
-        {
-            var client = Client.DemoClient();
-            var file = new FileInfo("test.png");
-
-            var uploader = new FileUploader(client, file);
-            var result = uploader.Upload(EStoreType.Store);
-
-            Assert.NotNull(result.FileId);
-            Assert.True(result.Stored);
         }
 
         [Fact]
@@ -42,10 +27,9 @@ namespace UploadcareCSharp.Tests
             var bytes = File.ReadAllBytes(file.FullName);
 
             var uploader = new FileUploader(client, bytes, file.Name);
-            var result = uploader.Upload(EStoreType.Store);
+            var result = uploader.Upload();
 
             Assert.NotNull(result.FileId);
-            Assert.True(result.Stored);
         }
 	}
 

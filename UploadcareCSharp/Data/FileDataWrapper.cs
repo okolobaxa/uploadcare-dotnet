@@ -2,7 +2,7 @@
 
 namespace UploadcareCSharp.Data
 {
-    public class FileDataWrapper : IDataWrapper<UploadcareFile, FileData>
+    internal class FileDataWrapper : IDataWrapper<UploadcareFile, FileData>
     {
         private readonly Client _client;
 

@@ -1,10 +1,12 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace UploadcareCSharp.Data
 {
-	public class UploadBaseData
+	internal class UploadBaseData
 	{
-		public Guid File { get; set; }
+        [JsonProperty("file")]
+		public Guid File { get; private set; }
 	}
 
 }

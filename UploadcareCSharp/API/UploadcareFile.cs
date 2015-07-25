@@ -12,17 +12,18 @@ namespace UploadcareCSharp.API
 		private readonly Client _client;
 		private readonly FileData _fileData;
 
-		public UploadcareFile(Client client, FileData fileData)
+		internal UploadcareFile(Client client, FileData fileData)
 		{
 			_client = client;
 			_fileData = fileData;
 		}
 
-        public UploadcareFile()
-        {
-        }
+	    protected UploadcareFile()
+	    {
+	        
+	    }
 
-		public virtual Guid FileId
+	    public virtual Guid FileId
 		{
 			get
 			{
