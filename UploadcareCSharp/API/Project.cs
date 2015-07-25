@@ -7,15 +7,12 @@ namespace UploadcareCSharp.API
 	/// <summary>
 	/// The resource for project, associated with the connecting account.
 	/// </summary>
-	public sealed class Project
+	public class Project
 	{
-
-		private readonly Client _client;
 		private readonly ProjectData _projectData;
 
-		public Project(Client client, ProjectData projectData)
+		internal Project(ProjectData projectData)
 		{
-			_client = client;
 			_projectData = projectData;
 		}
 
@@ -35,41 +32,32 @@ namespace UploadcareCSharp.API
 			}
 		}
 
-		public Collaborator Owner
-		{
-			get
-			{
-				if (_projectData.Collaborators.Count > 0)
-				{
-					return new Collaborator(this, this, _projectData.Collaborators.First());
-				}
-				else
-				{
-					return null;
-				}
-			}
-		}
+	    public Collaborator Owner
+	    {
+	        get
+	        {
+	            return _projectData.Collaborators.Count > 0
+	                ? new Collaborator(_projectData.Collaborators.First())
+	                : null;
+	        }
+	    }
 
-		public IList<Collaborator> Collaborators
+	    public IList<Collaborator> Collaborators
 		{
 			get
 			{
 				var collaborators = new List<Collaborator>(_projectData.Collaborators.Count);
-			    collaborators.AddRange(_projectData.Collaborators.Select(collaboratorData => new Collaborator(this, this, collaboratorData)));
+			    collaborators.AddRange(_projectData.Collaborators.Select(collaboratorData => new Collaborator(collaboratorData)));
 			    return collaborators;
 			}
 		}
 
-		public sealed class Collaborator
+		public class Collaborator
 		{
-			private readonly Project _outerInstance;
-		    private readonly Project _project;
 		    private readonly CollaboratorData _collaboratorData;
 
-			internal Collaborator(Project outerInstance, Project project, CollaboratorData collaboratorData)
+			internal Collaborator(CollaboratorData collaboratorData)
 			{
-				_outerInstance = outerInstance;
-				_project = project;
 				_collaboratorData = collaboratorData;
 			}
 

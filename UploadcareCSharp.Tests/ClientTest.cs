@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using UploadcareCSharp.API;
-using UploadcareCSharp.Enums;
 using UploadcareCSharp.Upload;
 using Xunit;
 
@@ -15,7 +14,7 @@ namespace UploadcareCSharp.Tests
             var file = new FileInfo("test.png");
 
             var uploader = new FileUploader(client, file);
-            var uploadedFileInfo = uploader.Upload(EStoreType.Auto);
+            var uploadedFileInfo = uploader.Upload();
 
             var result = client.GetFile(uploadedFileInfo.FileId);
 
@@ -39,7 +38,7 @@ namespace UploadcareCSharp.Tests
             var file = new FileInfo("test.png");
 
             var uploader = new FileUploader(client, file);
-            var uploadedFileInfo = uploader.Upload(EStoreType.Auto);
+            var uploadedFileInfo = uploader.Upload();
 
             client.SaveFile(uploadedFileInfo.FileId);
             var result = client.GetFile(uploadedFileInfo.FileId);
@@ -55,7 +54,7 @@ namespace UploadcareCSharp.Tests
             var file = new FileInfo("test.png");
 
             var uploader = new FileUploader(client, file);
-            var uploadedFileInfo = uploader.Upload(EStoreType.Auto);
+            var uploadedFileInfo = uploader.Upload();
 
             client.DeleteFile(uploadedFileInfo.FileId);
             var result = client.GetFile(uploadedFileInfo.FileId);

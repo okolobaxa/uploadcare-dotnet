@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CdnPathBuilderTest.cs" />
     <Compile Include="ClientTest.cs" />
+    <Compile Include="UrlUploaderTest.cs" />
     <Compile Include="FileUploaderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +72,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
     <Reference Include="xunit.abstractions">
       <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
       <Private>True</Private>

@@ -2,9 +2,9 @@
 
 namespace UploadcareCSharp.Data
 {
-    public interface IPageData<U>
+    internal interface IPageData<TU>
     {
-        List<U> GetResults();
+        List<TU> GetResults();
         bool HasMore();
     }
 }

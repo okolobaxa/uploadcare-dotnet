@@ -81,7 +81,7 @@ namespace UploadcareCSharp.API
 			}
 		}
 
-        public RequestHelper GetRequestHelper()
+        internal RequestHelper GetRequestHelper()
         {
             return _requestHelper;
         }
@@ -99,7 +99,7 @@ namespace UploadcareCSharp.API
 
 	        var result = _requestHelper.ExecuteQuery(request, true, new ProjectData());
 
-	        return new Project(this, result);
+	        return new Project(result);
 	    }
 
         /// <summary>

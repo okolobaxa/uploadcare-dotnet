@@ -1,7 +1,7 @@
 ﻿namespace UploadcareCSharp.Data
 {
-    public interface IDataWrapper<T, U>
+    internal interface IDataWrapper<out T, in TU>
     {
-        T Wrap(U data);
+        T Wrap(TU data);
     }
 }

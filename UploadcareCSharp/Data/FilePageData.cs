@@ -1,21 +1,25 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace UploadcareCSharp.Data
 {
-    public class FilePageData : IPageData<FileData>
+    internal class FilePageData : IPageData<FileData>
     {
-        public int page;
-        public int pages;
-        public List<FileData> results;
+        [JsonProperty("page")]
+        private int Page { get; set; }
+        [JsonProperty("pages")]
+        private int Pages { get; set; }
+        [JsonProperty("results")]
+        private List<FileData> Results { get; set; }
 
         public List<FileData> GetResults()
         {
-            return results;
+            return Results;
         }
 
         public bool HasMore()
         {
-            return page < pages;
+            return Page < Pages;
         }
     }
 }

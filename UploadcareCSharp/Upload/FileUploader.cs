@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using UploadcareCSharp.API;
 using UploadcareCSharp.Data;
-using UploadcareCSharp.Enums;
 using UploadcareCSharp.Exceptions;
 using UploadcareCSharp.Url;
 
@@ -56,7 +55,7 @@ namespace UploadcareCSharp.Upload
 		/// </summary>
 		/// <returns> An Uploadcare file </returns>
 		/// <exception cref="UploadFailureException"> </exception>
-        public UploadcareFile Upload(EStoreType storetype)
+        public UploadcareFile Upload()
         {
             var url = Urls.UploadBase();
 
@@ -69,11 +68,12 @@ namespace UploadcareCSharp.Upload
                 using (var content = new MultipartFormDataContent(boundary))
                 {
                     content.Add(new StringContent(_client.PublicKey), "UPLOADCARE_PUB_KEY");
-                    content.Add(new StringContent(GetUploadType(storetype)), "UPLOADCARE_STORE");
+                    content.Add(new StringContent("auto"), "UPLOADCARE_STORE");
                     if (_file != null)
                         content.Add(new StreamContent(File.OpenRead(_file.FullName)), "file", _file.Name);
                     else
                         content.Add(new ByteArrayContent(_bytes), "file", _fileName);
+                    
                     var buffer = content.ReadAsByteArrayAsync().Result;
                     using (var reqStream = request.GetRequestStream())
                     {
@@ -82,26 +82,14 @@ namespace UploadcareCSharp.Upload
 
                     request.ContentType = string.Format("multipart/form-data; boundary={0}", boundary);
 
-
                     var fileId = _client.GetRequestHelper().ExecuteQuery(request, false, new UploadBaseData()).File;
 
                     return _client.GetFile(fileId);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new UploadFailureException();
-            }
-        }
-
-        private static string GetUploadType(EStoreType type)
-        {
-            switch(type)
-            {
-                case EStoreType.DoNotStore: return "0";
-                case EStoreType.Store: return "1";
-                case EStoreType.Auto: return "auto";
-                default: throw new ArgumentException("");
             }
         }
 	}

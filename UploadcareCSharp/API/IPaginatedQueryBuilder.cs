@@ -2,7 +2,7 @@
 
 namespace UploadcareCSharp.API
 {
-    public interface IPaginatedQueryBuilder<T>
+    internal interface IPaginatedQueryBuilder<T>
     {
         /// <summary>
         /// Returns a resource iterable for lazy loading.

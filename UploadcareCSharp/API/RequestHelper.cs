@@ -14,7 +14,7 @@ namespace UploadcareCSharp.API
 	/// 
 	/// TODO Support of throttled requests needs to be added
 	/// </summary>
-	public class RequestHelper
+	internal class RequestHelper
 	{
 		private readonly Client _client;
 

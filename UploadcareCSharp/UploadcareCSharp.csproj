@@ -49,7 +49,9 @@
     <Compile Include="Data\FilePageData.cs" />
     <Compile Include="Data\IDataWrapper.cs" />
     <Compile Include="Data\IPageData.cs" />
-    <Compile Include="Enums\EStoreType.cs" />
+    <Compile Include="Data\UploadFromUrlData.cs" />
+    <Compile Include="Data\UploadFromUrlStatusData.cs" />
+    <Compile Include="Upload\UrlUploader.cs" />
     <Compile Include="Url\CdnPathBuilder.cs" />
     <Compile Include="API\Client.cs" />
     <Compile Include="API\UploadcareFile.cs" />
