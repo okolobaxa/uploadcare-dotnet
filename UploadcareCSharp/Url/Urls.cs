@@ -2,7 +2,7 @@
 
 namespace UploadcareCSharp.Url
 {
-	internal static class Urls
+	public static class Urls
 	{
 		private const string API_BASE = "https://api.uploadcare.com";
 		private const string CDN_BASE = "https://ucarecdn.com";
