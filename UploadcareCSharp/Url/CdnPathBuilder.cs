@@ -19,6 +19,19 @@ namespace UploadcareCSharp.Url
 			_sb.Append(uploadcareFile.FileId);
 		}
 
+	    /// <summary>
+	    /// Creates a new CDN path builder for some image id.
+	    /// </summary>
+        /// <param name="fileId">Image id to be used for the path</param>
+	    public CdnPathBuilder(Guid fileId)
+        {
+            _sb.Append(fileId);
+        }
+
+        public CdnPathBuilder()
+        {
+        }
+
 		private static void DimensionGuard(int dim)
 		{
 			if (dim < 1 || dim > 1024)
