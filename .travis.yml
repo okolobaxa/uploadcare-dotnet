@@ -1,3 +1,6 @@
+branches:
+  only:
+  - master
 language: csharp
 solution: UploadcareCSharp.sln
 install:

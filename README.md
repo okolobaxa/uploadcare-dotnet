@@ -7,7 +7,7 @@ This is a C# library for Uploadcare.
 
 Supported features:
 
-- Part of file and project API v0.3
+- Full file and project API v0.3
 - Paginated resources fetched as `List<T>`
 - CDN path builder
 - File uploads from disk, byteArray, and URL
@@ -43,7 +43,7 @@ var file = new FileInfo("test.png");
 try
 {
   var uploader = new FileUploader(_client, file);
-  var result = uploader.Upload(EStoreType.DoNotStore);
+  var result = uploader.Upload();
   Console.Writeline(result.FileId);
 } 
 catch (UploadFailureException ex) 
