@@ -2,6 +2,8 @@ uploadcare-csharp
 ===============
 
 [![Build Status](https://travis-ci.org/okolobaxa/uploadcare-csharp.svg)](https://travis-ci.org/okolobaxa/uploadcare-csharp)
+[![NuGet downloads](http://img.shields.io/nuget/dt/RouteJs.Mvc4.svg)](https://www.nuget.org/packages/UploadcareCSharp/)&nbsp;
+[![NuGet version](http://img.shields.io/nuget/v/RouteJs.Mvc4.svg)](https://www.nuget.org/packages/UploadcareCSharp/)&nbsp;
 
 This is a C# library for Uploadcare.
 
