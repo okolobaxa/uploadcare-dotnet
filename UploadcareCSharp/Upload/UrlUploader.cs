@@ -37,9 +37,7 @@ namespace UploadcareCSharp.Upload
         /// <exception cref="UploadFailureException"></exception>
         public UploadcareFile Upload(bool? store = null)
         {
-            if (store != null)
-                throw new NotImplementedException();
-            return Upload(500);
+            return Upload(500, store);
         }
 
         /// <summary>
@@ -49,10 +47,10 @@ namespace UploadcareCSharp.Upload
         /// <param name="pollingInterval">Pooling interval</param>
         /// <returns> UploadcareFile resource </returns>
         /// <exception cref="UploadFailureException"></exception>
-        public UploadcareFile Upload(int pollingInterval)
+        public UploadcareFile Upload(int pollingInterval, bool? store = null)
         {
             var requestHelper = _client.GetRequestHelper();
-            var uploadUrl = Urls.UploadFromUrl(_sourceUrl, _client.PublicKey);
+            var uploadUrl = Urls.UploadFromUrl(_sourceUrl, _client.PublicKey, store);
 
             var request = (HttpWebRequest) WebRequest.Create(uploadUrl);
             request.Method = "GET";
