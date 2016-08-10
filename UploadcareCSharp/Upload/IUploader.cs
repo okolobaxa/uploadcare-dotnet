@@ -1,4 +1,3 @@
-﻿using System;
 ﻿using UploadcareCSharp.API;
 
 namespace UploadcareCSharp.Upload
