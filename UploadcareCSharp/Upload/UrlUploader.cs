@@ -10,7 +10,7 @@ namespace UploadcareCSharp.Upload
     /// <summary>
     /// Uploadcare uploader for URLs.
     /// </summary>
-    internal class UrlUploader : IUploader
+    public sealed class UrlUploader : IUploader
     {
         private readonly Client _client;
         private readonly string _sourceUrl;
@@ -34,8 +34,10 @@ namespace UploadcareCSharp.Upload
         /// </summary>
         /// <returns> UploadcareFile resource </returns>
         /// <exception cref="UploadFailureException"></exception>
-        public UploadcareFile Upload()
+        public UploadcareFile Upload(bool? store = null)
         {
+            if (store != null)
+                throw new NotImplementedException();
             return Upload(500);
         }
 
