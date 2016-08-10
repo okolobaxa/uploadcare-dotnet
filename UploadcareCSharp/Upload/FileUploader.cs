@@ -69,7 +69,7 @@ namespace UploadcareCSharp.Upload
                 {
                     content.Add(new StringContent(_client.PublicKey), "UPLOADCARE_PUB_KEY");
                     if (store != null)
-                    	if (store)
+                    	if ((bool)store)
                     		content.Add(new StringContent("1"), "UPLOADCARE_STORE");
             		else
             			content.Add(new StringContent("0"), "UPLOADCARE_STORE");
