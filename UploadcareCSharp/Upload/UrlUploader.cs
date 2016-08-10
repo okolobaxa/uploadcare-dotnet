@@ -1,4 +1,5 @@
-﻿using System.Net;
+using System;
+using System.Net;
 using System.Threading;
 using UploadcareCSharp.API;
 using UploadcareCSharp.Data;
