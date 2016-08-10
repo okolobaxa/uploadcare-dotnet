@@ -55,9 +55,9 @@ namespace UploadcareCSharp.Upload
 		/// </summary>
 		/// <returns> An Uploadcare file </returns>
 		/// <exception cref="UploadFailureException"> </exception>
-        public UploadcareFile Upload()
+        public UploadcareFile Upload(bool? store = null)
         {
-            var url = Urls.UploadBase(bool? store = false);
+            var url = Urls.UploadBase();
 
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
