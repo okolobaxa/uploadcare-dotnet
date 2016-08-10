@@ -55,7 +55,7 @@ namespace UploadcareCSharp.Upload
 		/// </summary>
 		/// <returns> An Uploadcare file </returns>
 		/// <exception cref="UploadFailureException"> </exception>
-        public UploadcareFile Upload()
+        public UploadcareFile Upload(bool? store = null)
         {
             var url = Urls.UploadBase();
 
@@ -68,7 +68,14 @@ namespace UploadcareCSharp.Upload
                 using (var content = new MultipartFormDataContent(boundary))
                 {
                     content.Add(new StringContent(_client.PublicKey), "UPLOADCARE_PUB_KEY");
-                    content.Add(new StringContent("auto"), "UPLOADCARE_STORE");
+                    if (store != null)
+                    	if (store)
+                    		content.Add(new StringContent("1"), "UPLOADCARE_STORE");	
+	    		else
+	    			content.Add(new StringContent("0"), "UPLOADCARE_STORE");	
+                    else
+                    	content.Add(new StringContent("auto"), "UPLOADCARE_STORE");	
+
                     if (_file != null)
                         content.Add(new StreamContent(File.OpenRead(_file.FullName)), "file", _file.Name);
                     else
