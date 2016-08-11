@@ -67,13 +67,16 @@ namespace UploadcareCSharp.Url
 		/// <param name="sourceUrl"> URL to upload from </param>
 		/// <param name="pubKey"> Public key
 		/// </param>
-		public static Uri UploadFromUrl(string sourceUrl, string pubKey)
+		public static Uri UploadFromUrl(string sourceUrl, string pubKey, bool? store = null)
 		{
-		    var path = UPLOAD_BASE + "/from_url/" + "?source_url=" + sourceUrl + "&pub_key=" + pubKey;
-            
-            var builder = new UriBuilder(new Uri(path));
+			var path = UPLOAD_BASE + "/from_url/" + "?source_url=" + sourceUrl + "&pub_key=" + pubKey;
+            		if (store != null) {
+		        	if (store.Value) { path = path + "&store=1"; } else { path = path + "&store=0"; }
+	            	}
+            		
+            		var builder = new UriBuilder(new Uri(path));
 
-            return builder.Uri;
+			return builder.Uri;
 		}
 
 		/// <summary>

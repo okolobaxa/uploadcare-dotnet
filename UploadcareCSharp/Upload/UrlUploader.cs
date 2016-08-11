@@ -1,4 +1,5 @@
-﻿using System.Net;
+using System;
+using System.Net;
 using System.Threading;
 using UploadcareCSharp.API;
 using UploadcareCSharp.Data;
@@ -10,7 +11,7 @@ namespace UploadcareCSharp.Upload
     /// <summary>
     /// Uploadcare uploader for URLs.
     /// </summary>
-    internal class UrlUploader : IUploader
+    public sealed class UrlUploader : IUploader
     {
         private readonly Client _client;
         private readonly string _sourceUrl;
@@ -34,9 +35,9 @@ namespace UploadcareCSharp.Upload
         /// </summary>
         /// <returns> UploadcareFile resource </returns>
         /// <exception cref="UploadFailureException"></exception>
-        public UploadcareFile Upload()
+        public UploadcareFile Upload(bool? store = null)
         {
-            return Upload(500);
+            return Upload(500, store);
         }
 
         /// <summary>
@@ -46,10 +47,10 @@ namespace UploadcareCSharp.Upload
         /// <param name="pollingInterval">Pooling interval</param>
         /// <returns> UploadcareFile resource </returns>
         /// <exception cref="UploadFailureException"></exception>
-        public UploadcareFile Upload(int pollingInterval)
+        public UploadcareFile Upload(int pollingInterval, bool? store = null)
         {
             var requestHelper = _client.GetRequestHelper();
-            var uploadUrl = Urls.UploadFromUrl(_sourceUrl, _client.PublicKey);
+            var uploadUrl = Urls.UploadFromUrl(_sourceUrl, _client.PublicKey, store);
 
             var request = (HttpWebRequest) WebRequest.Create(uploadUrl);
             request.Method = "GET";
