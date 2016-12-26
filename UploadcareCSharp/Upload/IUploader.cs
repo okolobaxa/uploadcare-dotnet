@@ -4,6 +4,6 @@ namespace UploadcareCSharp.Upload
 {
 	public interface IUploader
 	{
-        UploadcareFile Upload();
+        UploadcareFile Upload(bool? store);
 	}
 }
