@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using Newtonsoft.Json;
 using UploadcareCSharp.Data;
 using UploadcareCSharp.Exceptions;
@@ -17,9 +18,11 @@ namespace UploadcareCSharp.API
 	internal class RequestHelper
 	{
 		private readonly Client _client;
+        private readonly HttpClient httpClient;
 
 		internal RequestHelper(Client client)
 		{
+            httpClient = new HttpClient();
 			_client = client;
 		}
 
@@ -29,14 +32,14 @@ namespace UploadcareCSharp.API
             return new FilesEnumator<T, TU, TK>(this, url, urlParameters, includeApiHeaders, pageData, dataWrapper); 
 	    }
 
-        public T ExecuteQuery<T>(HttpWebRequest request, bool includeApiHeaders, T dataClass)
+        public async Task<T> ExecuteQuery<T>(HttpWebRequest request, bool includeApiHeaders, T dataClass)
 	    {
             try
             {
                 if (includeApiHeaders)
                     AddApiHeaders(request);
 
-                var response = (HttpWebResponse) request.GetResponse();
+                var response = await httpClient.GetAsync(request.RequestUri);
 
                 CheckResponseStatus(response);
 
@@ -93,7 +96,7 @@ namespace UploadcareCSharp.API
         /// </summary>
         /// <param name="response"> The response object to be checked </param>
         /// <exception cref="IOException"> </exception>
-        private static void CheckResponseStatus(HttpWebResponse response)
+        private static async void CheckResponseStatus(HttpResponseMessage response)
         {
             var statusCode = response.StatusCode;
 
@@ -105,22 +108,23 @@ namespace UploadcareCSharp.API
             {
                 case HttpStatusCode.Unauthorized:
                 case HttpStatusCode.Forbidden:
-                    throw new UploadcareAuthenticationException(StreamToString(response.GetResponseStream()));
+                    throw new UploadcareAuthenticationException(await response.Content.ReadAsStringAsync());
                 case HttpStatusCode.BadRequest:
                 case HttpStatusCode.NotFound:
-                    throw new UploadcareInvalidRequestException(StreamToString(response.GetResponseStream()));
+                    throw new UploadcareInvalidRequestException(await response.Content.ReadAsStringAsync());
             }
 
-            throw new UploadcareApiException("Unknown exception during an API call, response:" + StreamToString(response.GetResponseStream()));
+            throw new UploadcareApiException("Unknown exception during an API call, response:" + await response.Content.ReadAsStringAsync());
         }
 
         private void AddApiHeaders(HttpWebRequest request)
         {
-            request.Accept = "application/vnd.uploadcare-v0.3+json";
-            request.Date = DateTime.Now;
-
+            httpClient.DefaultRequestHeaders.Add("Accept", new []{"application/vnd.uploadcare-v0.3+json"});
+            httpClient.DefaultRequestHeaders.Add("Date", new []{DateTime.Now.ToString()});
+            
             if (_client.SimpleAuth)
-                request.Headers.Set("Authorization", string.Format("Uploadcare.Simple {0}:{1}", _client.PublicKey, _client.PrivateKey));
+                httpClient.DefaultRequestHeaders.Add("Authorization", 
+                    new []{ string.Format("Uploadcare.Simple {0}:{1}", _client.PublicKey, _client.PrivateKey) });
             else
             {
                 //TODO: any another auth?
