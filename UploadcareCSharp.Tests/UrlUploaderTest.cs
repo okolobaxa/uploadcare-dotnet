@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using UploadcareCSharp.API;
+using UploadCareCSharp.API;
 using UploadcareCSharp.Upload;
 using Xunit;
 

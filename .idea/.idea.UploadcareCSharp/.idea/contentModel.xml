@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\git\uploadcare-csharp" t="IncludeFlat">
+      <e p=".nuget" t="Include">
+        <e p="NuGet.Config" t="Include" />
+        <e p="NuGet.exe" t="Include" />
+        <e p="NuGet.targets" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="UploadcareCSharp" t="IncludeRecursive">
+        <e p="API" t="Include">
+          <e p="Client.cs" t="Include" />
+          <e p="FileQueryBuilder.cs" t="Include" />
+          <e p="FilesEnumerator.cs" t="Include" />
+          <e p="IPaginatedQueryBuilder.cs" t="Include" />
+          <e p="Project.cs" t="Include" />
+          <e p="RequestHelper.cs" t="Include" />
+          <e p="UploadcareFile.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Data" t="Include">
+          <e p="FileData.cs" t="Include" />
+          <e p="FileDataWrapper.cs" t="Include" />
+          <e p="FilePageData.cs" t="Include" />
+          <e p="IDataWrapper.cs" t="Include" />
+          <e p="IPageData.cs" t="Include" />
+          <e p="ProjectData.cs" t="Include" />
+          <e p="UploadBaseData.cs" t="Include" />
+          <e p="UploadFromUrlData.cs" t="Include" />
+          <e p="UploadFromUrlStatusData.cs" t="Include" />
+        </e>
+        <e p="Exceptions" t="Include">
+          <e p="UploadcareApiException.cs" t="Include" />
+          <e p="UploadcareAuthenticationException.cs" t="Include" />
+          <e p="UploadcareInvalidRequestException.cs" t="Include" />
+          <e p="UploadcareNetworkException.cs" t="Include" />
+          <e p="UploadFailureException.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="UploadcareCSharp.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Upload" t="Include">
+          <e p="FileUploader.cs" t="Include" />
+          <e p="IUploader.cs" t="Include" />
+          <e p="UrlUploader.cs" t="Include" />
+        </e>
+        <e p="UploadcareCSharp.csproj" t="IncludeRecursive" />
+        <e p="Url" t="Include">
+          <e p="CdnPathBuilder.cs" t="Include" />
+          <e p="UrlParameters" t="Include">
+            <e p="FilesRemovedParameter.cs" t="Include" />
+            <e p="FilesStoredParameter.cs" t="Include" />
+            <e p="IUrlParameter.cs" t="Include" />
+          </e>
+          <e p="Urls.cs" t="Include" />
+        </e>
+      </e>
+      <e p="UploadcareCSharp.sln" t="IncludeFlat" />
+      <e p="UploadcareCSharp.Tests" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CdnPathBuilderTest.cs" t="Include" />
+        <e p="ClientTest.cs" t="Include" />
+        <e p="FileUploaderTest.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.1" t="Include">
+              <e p="UploadcareCSharp.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="UploadcareCSharp.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="test.png" t="Include" />
+        <e p="UploadcareCSharp.Tests.csproj" t="IncludeRecursive" />
+        <e p="UrlUploaderTest.cs" t="Include" />
+      </e>
+    </e>
+    <e p="C:\Users\micha\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\micha\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="C:\Users\micha\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="C:\Users\micha\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\micha\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_UploadcareCSharp.-244365898.00" t="ExcludeRecursive" />
+  </component>
+</project>

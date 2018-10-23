@@ -2,7 +2,7 @@
 using UploadcareCSharp.Data;
 using UploadcareCSharp.Url;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
 	/// <summary>
 	/// The main Uploadcare resource, represents a user-uploaded file.
@@ -23,94 +23,34 @@ namespace UploadcareCSharp.API
 	        
 	    }
 
-	    public virtual Guid FileId
-		{
-			get
-			{
-				return _fileData.Uuid;
-			}
-		}
+	    public virtual Guid FileId => _fileData.Uuid;
 
-		public bool Stored
-		{
-			get
-			{
-				return _fileData.DatetimeStored.HasValue && _fileData.DatetimeStored != DateTime.MinValue;
-			}
-		}
+		public bool Stored => _fileData.DatetimeStored.HasValue && _fileData.DatetimeStored != DateTime.MinValue;
 
-		public string MimeType
-		{
-			get
-			{
-				return _fileData.MimeType;
-			}
-		}
+		public string MimeType => _fileData.MimeType;
 
 		public bool HasOriginalFileUrl()
 		{
 			return _fileData.OriginalFileUrl != null;
 		}
 
-		public Uri OriginalFileUrl
-		{
-			get
-			{
-				return new Uri(_fileData.OriginalFileUrl);
-			}
-		}
+		public Uri OriginalFileUrl => new Uri(_fileData.OriginalFileUrl);
 
-		public string OriginalFilename
-		{
-			get
-			{
-				return _fileData.OriginalFilename;
-			}
-		}
+		public string OriginalFilename => _fileData.OriginalFilename;
 
-		public bool Removed
-		{
-			get
-			{
-                return _fileData.DatetimeRemoved.HasValue && RemovedDateTime != DateTime.MinValue;
-			}
-		}
+		public bool Removed => _fileData.DatetimeRemoved.HasValue && RemovedDateTime != DateTime.MinValue;
 
-		public DateTime RemovedDateTime
-		{
-			get
-			{
-			    return _fileData.DatetimeRemoved ?? DateTime.MinValue;
-			}
-		}
+		public DateTime RemovedDateTime => _fileData.DatetimeRemoved ?? DateTime.MinValue;
 
-		public int Size
-		{
-			get
-			{
-				return _fileData.Size;
-			}
-		}
+		public int Size => _fileData.Size;
 
-		public DateTime UploadDate
-		{
-			get
-            {
-                return _fileData.DatetimeUploaded ?? DateTime.MinValue;
-			}
-		}
+		public DateTime UploadDate => _fileData.DatetimeUploaded ?? DateTime.MinValue;
 
 		/// <summary>
 		/// Returns the unique REST URL for this resource.
 		/// </summary>
 		/// <returns> REST URL </returns>
-		public Uri Url
-		{
-			get
-			{
-				return new Uri(_fileData.Url);
-			}
-		}
+		public Uri Url => new Uri(_fileData.Url);
 
 		/// <summary>
 		/// Refreshes file data from Uploadcare.

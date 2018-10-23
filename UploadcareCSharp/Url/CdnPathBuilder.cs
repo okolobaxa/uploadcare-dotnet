@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Text;
-using UploadcareCSharp.API;
+using UploadCareCSharp.API;
 
 namespace UploadcareCSharp.Url
 {

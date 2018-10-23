@@ -2,7 +2,7 @@
 using System.Linq;
 using UploadcareCSharp.Data;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
 	/// <summary>
 	/// The resource for project, associated with the connecting account.
@@ -16,33 +16,15 @@ namespace UploadcareCSharp.API
 			_projectData = projectData;
 		}
 
-		public string Name
-		{
-			get
-			{
-				return _projectData.Name;
-			}
-		}
+		public string Name => _projectData.Name;
 
-		public string PubKey
-		{
-			get
-			{
-				return _projectData.PubKey;
-			}
-		}
+		public string PubKey => _projectData.PubKey;
 
-	    public Collaborator Owner
-	    {
-	        get
-	        {
-	            return _projectData.Collaborators.Count > 0
-	                ? new Collaborator(_projectData.Collaborators.First())
-	                : null;
-	        }
-	    }
+		public Collaborator Owner => _projectData.Collaborators.Count > 0
+			? new Collaborator(_projectData.Collaborators.First())
+			: null;
 
-	    public IList<Collaborator> Collaborators
+		public IList<Collaborator> Collaborators
 		{
 			get
 			{
@@ -61,21 +43,9 @@ namespace UploadcareCSharp.API
 				_collaboratorData = collaboratorData;
 			}
 
-			public string Name
-			{
-				get
-				{
-					return _collaboratorData.Name;
-				}
-			}
+			public string Name => _collaboratorData.Name;
 
-			public string Email
-			{
-				get
-				{
-					return _collaboratorData.Email;
-				}
-			}
+			public string Email => _collaboratorData.Email;
 		}
 	}
 

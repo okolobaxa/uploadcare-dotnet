@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 using System.Threading;
-using UploadcareCSharp.API;
+using UploadCareCSharp.API;
 using UploadcareCSharp.Data;
 using UploadcareCSharp.Exceptions;
 using UploadcareCSharp.Url;

@@ -3,7 +3,7 @@ using System.Net;
 using UploadcareCSharp.Data;
 using UploadcareCSharp.Url;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
 	/// <summary>
 	/// Uploadcare API client.
@@ -49,44 +49,23 @@ namespace UploadcareCSharp.API
 		/// Returns the public key.
 		/// </summary>
 		/// <returns> Public key </returns>
-		public string PublicKey
-		{
-			get
-			{
-				return _publicKey;
-			}
-		}
+		public string PublicKey => _publicKey;
 
 		/// <summary>
 		/// Returns the private key.
 		/// </summary>
 		/// <returns> Private key </returns>
-		public string PrivateKey
-		{
-			get
-			{
-				return _privateKey;
-			}
-		}
+		public string PrivateKey => _privateKey;
 
 		/// <summary>
 		/// Returns true, if simple authentication is used.
 		/// </summary>
 		/// <returns> true, if simple authentication is used, false otherwise </returns>
-		public bool SimpleAuth
-		{
-			get
-			{
-				return _simpleAuth;
-			}
-		}
+		public bool SimpleAuth => _simpleAuth;
 
-        internal RequestHelper GetRequestHelper()
-        {
-            return _requestHelper;
-        }
+		internal RequestHelper GetRequestHelper() => _requestHelper;
 
-	    /// <summary>
+		/// <summary>
 	    /// Requests project info from the API.
 	    /// </summary>
 	    /// <returns> Project resource </returns>
@@ -106,12 +85,9 @@ namespace UploadcareCSharp.API
         /// Begins to build a request for uploaded files for the current account.
         /// </summary>
         /// <returns> File resource request builder </returns> 
-        public FilesQueryBuilder GetFiles()
-        {
-            return new FilesQueryBuilder(this);
-        }
+        public FilesQueryBuilder GetFiles() => new FilesQueryBuilder(this);
 
-        /// <summary>
+		/// <summary>
 		/// Requests file data.
 		/// </summary>
 		/// <param name="fileId"> Resource UUID </param>

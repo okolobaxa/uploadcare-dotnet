@@ -4,21 +4,17 @@ using UploadcareCSharp.Data;
 using UploadcareCSharp.Url;
 using UploadcareCSharp.Url.UrlParameters;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
     public class FilesQueryBuilder : IPaginatedQueryBuilder<UploadcareFile>
     {
         private readonly Client _client;
         private readonly List<IUrlParameter> _parameters = new List<IUrlParameter>();
 
-
         /// <summary>
         /// Initializes a new builder for the given client.
         /// </summary>
-        public FilesQueryBuilder(Client client)
-        {
-            _client = client;
-        }
+        public FilesQueryBuilder(Client client) => _client = client;
 
         /// <summary>
         /// Adds a filter for removed files.
@@ -50,9 +46,6 @@ namespace UploadcareCSharp.API
             return result;
         }
 
-        public List<UploadcareFile> AsList()
-        {
-            return AsIterable().ToList();
-        }
+        public List<UploadcareFile> AsList() => AsIterable().ToList();
     }
 }

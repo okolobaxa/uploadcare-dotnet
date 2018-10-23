@@ -7,9 +7,9 @@ using System.Net;
 using UploadcareCSharp.Data;
 using UploadcareCSharp.Url.UrlParameters;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
-    internal class FilesEnumator<T, TU, TK> : IEnumerator<T>, IEnumerable<T>
+    internal class FilesEnumerator<T, TU, TK> : IEnumerator<T>, IEnumerable<T>
     {
         private readonly RequestHelper _requestHelper;
         private readonly Uri _url;
@@ -21,7 +21,7 @@ namespace UploadcareCSharp.API
         private bool _more;
         private IEnumerator<TU> _pageIterator;
 
-        public FilesEnumator(RequestHelper requestHelper, Uri url, List<IUrlParameter> urlParameters,
+        public FilesEnumerator(RequestHelper requestHelper, Uri url, List<IUrlParameter> urlParameters,
             bool includeApiHeaders, TK dataClass, IDataWrapper<T, TU> dataWrapper)
         {
             _requestHelper = requestHelper;
@@ -67,30 +67,15 @@ namespace UploadcareCSharp.API
             return false;
         }
 
-        public void Reset()
-        {
-            throw new NotImplementedException();
-        }
+        public void Reset() => throw new NotImplementedException();
 
         public void Dispose()
         {
         }
 
-        public T Current
-        {
-            get
-            {
-                return _dataWrapper.Wrap(_pageIterator.Current);
-            }
-        }
+        public T Current => _dataWrapper.Wrap(_pageIterator.Current);
 
-        object IEnumerator.Current
-        {
-            get
-            {
-                return Current;
-            }
-        }
+        object IEnumerator.Current => Current;
 
         public IEnumerator<T> GetEnumerator()
         {

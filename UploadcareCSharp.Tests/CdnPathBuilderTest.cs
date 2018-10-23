@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Moq;
-using UploadcareCSharp.API;
+using UploadCareCSharp.API;
 using UploadcareCSharp.Url;
 using Xunit;
 

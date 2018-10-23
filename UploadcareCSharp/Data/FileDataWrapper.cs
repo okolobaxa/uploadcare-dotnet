@@ -1,4 +1,4 @@
-﻿using UploadcareCSharp.API;
+﻿using UploadCareCSharp.API;
 
 namespace UploadcareCSharp.Data
 {

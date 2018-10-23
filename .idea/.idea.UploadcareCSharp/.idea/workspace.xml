@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="77359566-28de-4254-a0df-59b2432d2a5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.UploadcareCSharp/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.UploadcareCSharp/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.UploadcareCSharp/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.UploadcareCSharp/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.UploadcareCSharp/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/CdnPathBuilderTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp.Tests/CdnPathBuilderTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/ClientTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp.Tests/ClientTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/FileUploaderTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp.Tests/FileUploaderTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/UrlUploaderTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp.Tests/UrlUploaderTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp.Tests/packages.config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/Client.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/FileQueryBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/FileQueryBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/IPaginatedQueryBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/IPaginatedQueryBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/Project.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/Project.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/RequestHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/RequestHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/API/UploadcareFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/API/UploadcareFile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/Data/FileDataWrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/Data/FileDataWrapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/Upload/FileUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/Upload/FileUploader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/Upload/IUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/Upload/IUploader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/Upload/UrlUploader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/Upload/UrlUploader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.nuspec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/Url/CdnPathBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UploadcareCSharp/Url/CdnPathBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UploadcareCSharp/packages.config" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1901525558">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="config" value="2" />
+          <entry key="cs" value="11" />
+          <entry key="csproj" value="4" />
+          <entry key="nuspec" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="11" />
+          <entry key="Config" value="2" />
+          <entry key="Csproj" value="4" />
+          <entry key="NuGet spec" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="16" />
+          <entry key="csproj" value="121" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="16" />
+          <entry key="Csproj" value="121" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/Client.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-187">
+              <caret line="87" column="75" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="75" />
+              <folding>
+                <marker date="1540323864657" expanded="true" signature="6:88" ph="..." />
+                <marker date="1540323864657" expanded="true" signature="120:3993" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="124:256" ph="/// Uploadcare API client. ... " />
+                <marker date="1540323864657" expanded="true" signature="284:3990" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="460:778" ph="/// Initializes a client with custom access keys. ... " />
+                <marker date="1540323864657" expanded="true" signature="855:1002" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="1006:1275" ph="/// Creates a client with demo credentials. ... " />
+                <marker date="1540323864657" expanded="true" signature="1311:1376" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="1380:1478" ph="/// Returns the public key. ... " />
+                <marker date="1540323864657" expanded="true" signature="1523:1623" ph="/// Returns the private key. ... " />
+                <marker date="1540323864657" expanded="true" signature="1670:1837" ph="/// Returns true, if simple authentication is used. ... " />
+                <marker date="1540323864657" expanded="true" signature="1946:2071" ph="/// Requests project info from the API. ... " />
+                <marker date="1540323864657" expanded="true" signature="2104:2378" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="2388:2570" ph="/// Begins to build a request for uploaded files for the current account. ... " />
+                <marker date="1540323864657" expanded="true" signature="2650:2808" ph="/// Requests file data. ... " />
+                <marker date="1540323864657" expanded="true" signature="2853:3133" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="3140:3252" ph="/// Marks a file as deleted. ... " />
+                <marker date="1540323864657" expanded="true" signature="3290:3507" ph="{...}" />
+                <marker date="1540323864657" expanded="true" signature="3511:3729" ph="/// Marks a file as saved. ... " />
+                <marker date="1540323864657" expanded="true" signature="3765:3987" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/FileQueryBuilder.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="48" column="70" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
+              <folding>
+                <marker date="1540323799866" expanded="false" signature="6:151" ph="..." />
+                <marker date="1540323799866" expanded="true" signature="183:1695" ph="{...}" />
+                <marker date="1540323799866" expanded="true" signature="261:1693" ph="{...}" />
+                <marker date="1540323799866" expanded="true" signature="404:500" ph="/// Initializes a new builder for the given client. ... " />
+                <marker date="1540323799866" expanded="true" signature="579:760" ph="/// Adds a filter for removed files. ... " />
+                <marker date="1540323799866" expanded="true" signature="815:925" ph="{...}" />
+                <marker date="1540323799866" expanded="true" signature="935:1113" ph="/// Adds a filter for stored files. ... " />
+                <marker date="1540323799866" expanded="true" signature="1166:1274" ph="{...}" />
+                <marker date="1540323799866" expanded="true" signature="1331:1615" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumerator.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-876">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+              <folding>
+                <marker date="1540323864626" expanded="false" signature="6:219" ph="..." />
+                <marker date="1540323864626" expanded="true" signature="251:3333" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="332:3331" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="928:1212" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="1244:1963" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="1995:2247" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2047:2104" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2127:2211" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2347:2367" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2533:2578" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2627:2683" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2807:2986" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="2867:2976" ph="{...}" />
+                <marker date="1540323864626" expanded="true" signature="3056:3325" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/IPaginatedQueryBuilder.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <marker date="1540323732313" expanded="true" signature="65:414" ph="{...}" />
+                <marker date="1540323732313" expanded="true" signature="116:412" ph="{...}" />
+                <marker date="1540323732313" expanded="true" signature="131:225" ph="/// Returns a resource iterable for lazy loading. ... " />
+                <marker date="1540323732313" expanded="true" signature="272:380" ph="/// Iterates through all resources and returns a complete list. ... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/Project.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-171">
+              <folding>
+                <marker date="1540323749552" expanded="false" signature="6:81" ph="..." />
+                <marker date="1540323749552" expanded="true" signature="113:1220" ph="{...}" />
+                <marker date="1540323749552" expanded="true" signature="117:217" ph="/// The resource for project, associated with the connecting account. ... " />
+                <marker date="1540323749552" expanded="true" signature="239:1217" ph="{...}" />
+                <marker date="1540323749552" expanded="true" signature="332:371" ph="{...}" />
+                <marker date="1540323749552" expanded="true" signature="645:903" ph="{...}" />
+                <marker date="1540323749552" expanded="true" signature="656:899" ph="{...}" />
+                <marker date="1540323749552" expanded="true" signature="932:1214" ph="{...}" />
+                <marker date="1540323749552" expanded="true" signature="1056:1108" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/RequestHelper.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-831">
+              <caret line="46" column="68" lean-forward="true" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+              <folding>
+                <marker date="1540323832663" expanded="false" signature="6:211" ph="..." />
+                <marker date="1540323832663" expanded="true" signature="243:5013" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="247:429" ph="/// A helper class for doing API calls to the Uploadcare API. Supports API version 0.3. ... " />
+                <marker date="1540323832663" expanded="true" signature="459:5011" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="538:567" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="757:891" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="986:1969" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="1009:1616" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="1298:1602" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="1386:1584" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="1651:1855" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="1886:1962" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="1976:2527" ph="/// Executes the request et the Uploadcare API and return the HTTP Response object. ... " />
+                <marker date="1540323832663" expanded="true" signature="2618:2944" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="2629:2860" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="2885:2940" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="2951:3266" ph="/// Verifies that the response status codes are within acceptable boundaries and throws corresponding exceptions ... " />
+                <marker date="1540323832663" expanded="true" signature="3340:4171" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="3491:3543" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="3575:4016" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="4231:4622" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="4542:4612" ph="{...}" />
+                <marker date="1540323832663" expanded="true" signature="4632:4835" ph="/// Convert an InputStream into a String object ... " />
+                <marker date="1540323832663" expanded="true" signature="4895:5005" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/UploadcareFile.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-966">
+              <folding>
+                <marker date="1540323749563" expanded="false" signature="6:70" ph="..." />
+                <marker date="1540323749563" expanded="true" signature="102:2638" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="106:203" ph="/// The main Uploadcare resource, represents a user-uploaded file. ... " />
+                <marker date="1540323749563" expanded="true" signature="232:2635" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="370:424" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="457:481" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="727:780" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="1226:1345" ph="/// Returns the unique REST URL for this resource. ... " />
+                <marker date="1540323749563" expanded="true" signature="1393:1628" ph="/// Refreshes file data from Uploadcare. ... " />
+                <marker date="1540323749563" expanded="true" signature="1661:1712" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="1716:1949" ph="/// Deletes this file from Uploadcare. ... " />
+                <marker date="1540323749563" expanded="true" signature="1982:2049" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="2053:2304" ph="/// Saves this file on Uploadcare (marks it to be kept). ... " />
+                <marker date="1540323749563" expanded="true" signature="2335:2422" ph="{...}" />
+                <marker date="1540323749563" expanded="true" signature="2426:2554" ph="/// Creates a CDN path builder for this file. ... " />
+                <marker date="1540323749563" expanded="true" signature="2588:2632" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/obj/Debug/netcoreapp2.1/UploadcareCSharp.Tests.AssemblyInfo.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+              <folding>
+                <marker date="1540323501292" expanded="true" signature="0:434" ph="/* ------------------------------------------------------------------------------ ... */" />
+                <marker date="1540323501292" expanded="false" signature="442:474" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/obj/Debug/netcoreapp2.1/UploadcareCSharp.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/obj/Debug/netcoreapp2.1/UploadcareCSharp.Tests.AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/UploadcareFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/FileQueryBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumerator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/RequestHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/Client.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/IPaginatedQueryBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/API/Project.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/UploadcareCSharp/Properties/AssemblyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/UploadcareCSharp/Properties/AssemblyInfo.cs" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.csproj" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp.Tests/Properties/AssemblyInfo.cs" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp/API/Client.cs" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp/API/FileQueryBuilder.cs" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumator.cs" />
+        <option value="$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumerator.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-11" />
+    <option name="width" value="1620" />
+    <option name="height" value="1751" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Properties" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="API" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Data" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="UploadcareCSharp" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="UploadcareCSharp.Tests" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Project.UploadcareCSharp.Tests">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UploadcareCSharp.Tests" type="DotNetProject" factoryName=".NET Project" temporary="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/UploadcareCSharp.Tests/bin/Debug/netcoreapp2.1/UploadcareCSharp.Tests.dll" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/UploadcareCSharp.Tests" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v2.1" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue=".NET Project.Default" />
+      <item itemvalue=".NET Project.UploadcareCSharp.Tests" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Project.UploadcareCSharp.Tests" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="77359566-28de-4254-a0df-59b2432d2a5e" name="Default Changelist" comment="" />
+      <created>1540322900119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1540322900119</updated>
+      <workItem from="1540322902336" duration="962000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="962000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="0" width="1080" height="1167" extended-state="0" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25588235" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" weight="0.32978722" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" visible="true" weight="0.32978722" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Build" weight="0.32978722" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32978722" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/packages.config">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.nuspec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="9" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/obj/Debug/netcoreapp2.1/UploadcareCSharp.AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/Properties/AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <marker date="1540323337308" expanded="false" signature="6:101" ph="..." />
+            <marker date="1540323337308" expanded="true" signature="103:290" ph="/* General Information about an assembly is controlled through the following ... */" />
+            <marker date="1540323337308" expanded="true" signature="416:626" ph="/* Setting ComVisible to false makes the types in this assembly not visible ... */" />
+            <marker date="1540323337308" expanded="true" signature="801:1128" ph="/* Version information for an assembly consists of the following four values: ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/UploadcareCSharp.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/Properties/AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/packages.config">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp.Tests/obj/Debug/netcoreapp2.1/UploadcareCSharp.Tests.AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <marker date="1540323501292" expanded="true" signature="0:434" ph="/* ------------------------------------------------------------------------------ ... */" />
+            <marker date="1540323501292" expanded="false" signature="442:474" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/Client.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="87" column="75" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="75" />
+          <folding>
+            <marker date="1540323864657" expanded="true" signature="6:88" ph="..." />
+            <marker date="1540323864657" expanded="true" signature="120:3993" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="124:256" ph="/// Uploadcare API client. ... " />
+            <marker date="1540323864657" expanded="true" signature="284:3990" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="460:778" ph="/// Initializes a client with custom access keys. ... " />
+            <marker date="1540323864657" expanded="true" signature="855:1002" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="1006:1275" ph="/// Creates a client with demo credentials. ... " />
+            <marker date="1540323864657" expanded="true" signature="1311:1376" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="1380:1478" ph="/// Returns the public key. ... " />
+            <marker date="1540323864657" expanded="true" signature="1523:1623" ph="/// Returns the private key. ... " />
+            <marker date="1540323864657" expanded="true" signature="1670:1837" ph="/// Returns true, if simple authentication is used. ... " />
+            <marker date="1540323864657" expanded="true" signature="1946:2071" ph="/// Requests project info from the API. ... " />
+            <marker date="1540323864657" expanded="true" signature="2104:2378" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="2388:2570" ph="/// Begins to build a request for uploaded files for the current account. ... " />
+            <marker date="1540323864657" expanded="true" signature="2650:2808" ph="/// Requests file data. ... " />
+            <marker date="1540323864657" expanded="true" signature="2853:3133" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="3140:3252" ph="/// Marks a file as deleted. ... " />
+            <marker date="1540323864657" expanded="true" signature="3290:3507" ph="{...}" />
+            <marker date="1540323864657" expanded="true" signature="3511:3729" ph="/// Marks a file as saved. ... " />
+            <marker date="1540323864657" expanded="true" signature="3765:3987" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/FileQueryBuilder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="48" column="70" selection-start-line="48" selection-start-column="70" selection-end-line="48" selection-end-column="70" />
+          <folding>
+            <marker date="1540323799866" expanded="false" signature="6:151" ph="..." />
+            <marker date="1540323799866" expanded="true" signature="183:1695" ph="{...}" />
+            <marker date="1540323799866" expanded="true" signature="261:1693" ph="{...}" />
+            <marker date="1540323799866" expanded="true" signature="404:500" ph="/// Initializes a new builder for the given client. ... " />
+            <marker date="1540323799866" expanded="true" signature="579:760" ph="/// Adds a filter for removed files. ... " />
+            <marker date="1540323799866" expanded="true" signature="815:925" ph="{...}" />
+            <marker date="1540323799866" expanded="true" signature="935:1113" ph="/// Adds a filter for stored files. ... " />
+            <marker date="1540323799866" expanded="true" signature="1166:1274" ph="{...}" />
+            <marker date="1540323799866" expanded="true" signature="1331:1615" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/FilesEnumerator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-876">
+          <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+          <folding>
+            <marker date="1540323864626" expanded="false" signature="6:219" ph="..." />
+            <marker date="1540323864626" expanded="true" signature="251:3333" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="332:3331" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="928:1212" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="1244:1963" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="1995:2247" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2047:2104" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2127:2211" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2347:2367" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2533:2578" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2627:2683" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2807:2986" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="2867:2976" ph="{...}" />
+            <marker date="1540323864626" expanded="true" signature="3056:3325" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/IPaginatedQueryBuilder.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1540323732313" expanded="true" signature="65:414" ph="{...}" />
+            <marker date="1540323732313" expanded="true" signature="116:412" ph="{...}" />
+            <marker date="1540323732313" expanded="true" signature="131:225" ph="/// Returns a resource iterable for lazy loading. ... " />
+            <marker date="1540323732313" expanded="true" signature="272:380" ph="/// Iterates through all resources and returns a complete list. ... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/Project.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-171">
+          <folding>
+            <marker date="1540323749552" expanded="false" signature="6:81" ph="..." />
+            <marker date="1540323749552" expanded="true" signature="113:1220" ph="{...}" />
+            <marker date="1540323749552" expanded="true" signature="117:217" ph="/// The resource for project, associated with the connecting account. ... " />
+            <marker date="1540323749552" expanded="true" signature="239:1217" ph="{...}" />
+            <marker date="1540323749552" expanded="true" signature="332:371" ph="{...}" />
+            <marker date="1540323749552" expanded="true" signature="645:903" ph="{...}" />
+            <marker date="1540323749552" expanded="true" signature="656:899" ph="{...}" />
+            <marker date="1540323749552" expanded="true" signature="932:1214" ph="{...}" />
+            <marker date="1540323749552" expanded="true" signature="1056:1108" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/RequestHelper.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-831">
+          <caret line="46" column="68" lean-forward="true" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
+          <folding>
+            <marker date="1540323832663" expanded="false" signature="6:211" ph="..." />
+            <marker date="1540323832663" expanded="true" signature="243:5013" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="247:429" ph="/// A helper class for doing API calls to the Uploadcare API. Supports API version 0.3. ... " />
+            <marker date="1540323832663" expanded="true" signature="459:5011" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="538:567" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="757:891" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="986:1969" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="1009:1616" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="1298:1602" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="1386:1584" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="1651:1855" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="1886:1962" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="1976:2527" ph="/// Executes the request et the Uploadcare API and return the HTTP Response object. ... " />
+            <marker date="1540323832663" expanded="true" signature="2618:2944" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="2629:2860" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="2885:2940" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="2951:3266" ph="/// Verifies that the response status codes are within acceptable boundaries and throws corresponding exceptions ... " />
+            <marker date="1540323832663" expanded="true" signature="3340:4171" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="3491:3543" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="3575:4016" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="4231:4622" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="4542:4612" ph="{...}" />
+            <marker date="1540323832663" expanded="true" signature="4632:4835" ph="/// Convert an InputStream into a String object ... " />
+            <marker date="1540323832663" expanded="true" signature="4895:5005" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UploadcareCSharp/API/UploadcareFile.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-966">
+          <folding>
+            <marker date="1540323749563" expanded="false" signature="6:70" ph="..." />
+            <marker date="1540323749563" expanded="true" signature="102:2638" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="106:203" ph="/// The main Uploadcare resource, represents a user-uploaded file. ... " />
+            <marker date="1540323749563" expanded="true" signature="232:2635" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="370:424" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="457:481" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="727:780" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="1226:1345" ph="/// Returns the unique REST URL for this resource. ... " />
+            <marker date="1540323749563" expanded="true" signature="1393:1628" ph="/// Refreshes file data from Uploadcare. ... " />
+            <marker date="1540323749563" expanded="true" signature="1661:1712" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="1716:1949" ph="/// Deletes this file from Uploadcare. ... " />
+            <marker date="1540323749563" expanded="true" signature="1982:2049" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="2053:2304" ph="/// Saves this file on Uploadcare (marks it to be kept). ... " />
+            <marker date="1540323749563" expanded="true" signature="2335:2422" ph="{...}" />
+            <marker date="1540323749563" expanded="true" signature="2426:2554" ph="/// Creates a CDN path builder for this file. ... " />
+            <marker date="1540323749563" expanded="true" signature="2588:2632" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

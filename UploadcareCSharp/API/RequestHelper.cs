@@ -7,7 +7,7 @@ using UploadcareCSharp.Data;
 using UploadcareCSharp.Exceptions;
 using UploadcareCSharp.Url.UrlParameters;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
 	/// <summary>
 	/// A helper class for doing API calls to the Uploadcare API. Supports API version 0.3.
@@ -26,7 +26,7 @@ namespace UploadcareCSharp.API
         public IEnumerable<T> ExecutePaginatedQuery<T, TU, TK>(Uri url, List<IUrlParameter> urlParameters,
             bool includeApiHeaders, TK pageData, IDataWrapper<T, TU> dataWrapper)
 	    {
-            return new FilesEnumator<T, TU, TK>(this, url, urlParameters, includeApiHeaders, pageData, dataWrapper); 
+            return new FilesEnumerator<T, TU, TK>(this, url, urlParameters, includeApiHeaders, pageData, dataWrapper); 
 	    }
 
         public T ExecuteQuery<T>(HttpWebRequest request, bool includeApiHeaders, T dataClass)

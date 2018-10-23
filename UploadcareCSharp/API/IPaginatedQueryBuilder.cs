@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UploadcareCSharp.API
+namespace UploadCareCSharp.API
 {
     internal interface IPaginatedQueryBuilder<T>
     {
