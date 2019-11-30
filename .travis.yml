@@ -1,9 +1,18 @@
 branches:
   only:
   - master
-language: csharp
-solution: UploadcareCSharp.sln
+sudo: required
+dist: bionic
+mono: none
+addons:
+  snaps:
+  - name: dotnet-sdk
+    classic: true
+    channel: latest/stable
 install:
-  - nuget restore UploadcareCSharp.sln
+- sudo snap alias dotnet-sdk.dotnet dotnet
+- dotnet --version
+- dotnet restore
 script:
-  - xbuild /p:Configuration=Release UploadcareCSharp.sln
+- dotnet build
+- dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj
