@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadcareCSharp", "UploadcareCSharp\UploadcareCSharp.csproj", "{31AE0941-2C5B-466B-8380-0A7A92C40C28}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UploadcareCSharp.Tests", "UploadcareCSharp.Tests\UploadcareCSharp.Tests.csproj", "{E6CE66D7-001A-4B1C-944E-3DA8F4C4277E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{53DD255B-59B3-4F5D-A7BF-B90B8F41C47D}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
@@ -14,22 +10,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{53DD25
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uploadcare", "Uploadcare\Uploadcare.csproj", "{58F024C2-EB19-4FBE-A4DC-96A990DEAC3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uploadcare.Tests", "Uploadcare.Tests\Uploadcare.Tests.csproj", "{CF0C571C-F8DC-4623-A926-4E8178D4EA77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{31AE0941-2C5B-466B-8380-0A7A92C40C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31AE0941-2C5B-466B-8380-0A7A92C40C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31AE0941-2C5B-466B-8380-0A7A92C40C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31AE0941-2C5B-466B-8380-0A7A92C40C28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6CE66D7-001A-4B1C-944E-3DA8F4C4277E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6CE66D7-001A-4B1C-944E-3DA8F4C4277E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6CE66D7-001A-4B1C-944E-3DA8F4C4277E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6CE66D7-001A-4B1C-944E-3DA8F4C4277E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58F024C2-EB19-4FBE-A4DC-96A990DEAC3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58F024C2-EB19-4FBE-A4DC-96A990DEAC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58F024C2-EB19-4FBE-A4DC-96A990DEAC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58F024C2-EB19-4FBE-A4DC-96A990DEAC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0C571C-F8DC-4623-A926-4E8178D4EA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0C571C-F8DC-4623-A926-4E8178D4EA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0C571C-F8DC-4623-A926-4E8178D4EA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0C571C-F8DC-4623-A926-4E8178D4EA77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7301E0F1-146D-491C-9594-D501E181D2FB}
 	EndGlobalSection
 EndGlobal
