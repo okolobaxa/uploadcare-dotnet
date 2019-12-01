@@ -2,9 +2,9 @@ branches:
   only:
   - master
 sudo: required
-dist: xenial
+dist: bionic
 mono: none
-dotnet: 3.0.101
+dotnet: 3.0
 install:
 - dotnet restore
 script:
