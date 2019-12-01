@@ -1,8 +1,8 @@
 branches:
   only:
   - master
-language: csharp
-dist: trusty
+sudo: required
+dist: xenial
 mono: none
 dotnet: 3.0.101
 install:
