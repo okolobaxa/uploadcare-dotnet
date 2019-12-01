@@ -2,8 +2,11 @@ branches:
   only:
   - master
 language: csharp
-solution: UploadcareCSharp.sln
+dist: trusty
+mono: none
+dotnet: 3.0.1
 install:
-  - nuget restore UploadcareCSharp.sln
+- dotnet restore
 script:
-  - xbuild /p:Configuration=Release UploadcareCSharp.sln
+- dotnet build
+- dotnet test UploadcareCSharp.Tests/UploadcareCSharp.Tests.csproj
