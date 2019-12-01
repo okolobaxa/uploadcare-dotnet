@@ -4,8 +4,14 @@ branches:
 sudo: required
 dist: bionic
 mono: none
-dotnet: 3.0
+addons:
+  snaps:
+  - name: dotnet-sdk
+    classic: true
+    channel: latest/stable
 install:
+- sudo snap alias dotnet-sdk.dotnet dotnet
+- dotnet --version
 - dotnet restore
 script:
 - dotnet build
