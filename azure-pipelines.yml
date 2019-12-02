@@ -19,7 +19,7 @@ steps:
 - script: dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj --logger trx --collect "Code coverage"
   displayName: 'dotnet test'
 
-- script: dotnet pack Uploadcare/Uploadcare.csproj
+- script: dotnet pack Uploadcare/Uploadcare.csproj --configuration Release
   displayName: 'dotnet pack'
 
 - task: PublishTestResults@2
