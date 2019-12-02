@@ -4,15 +4,20 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Anton Kheistver;Diego Ernesto Farías</Authors>
     <Description>C# library for accessing Uploadcare API</Description>
+    <PackageId>UploadcareCSharp</PackageId>
     <PackageProjectUrl>https://github.com/okolobaxa/uploadcare-dotnet</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/okolobaxa/uploadcare-dotnet/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://uploadcare.com/apple-touch-icon.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageTags>uploadcare;upload;file</PackageTags>
     <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
