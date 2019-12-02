@@ -22,3 +22,9 @@ steps:
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: 'Uploadcare/Uploadcare.csproj'
+    versioningScheme: 'off'
