@@ -19,14 +19,11 @@ steps:
 - script: dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj --logger trx --collect "Code coverage"
   displayName: 'dotnet test'
 
-- script: dotnet pack Uploadcare.Tests/Uploadcare.Tests.csproj --configuration Release -o $(Build.ArtifactStagingDirectory)
+- script: dotnet pack Uploadcare.Tests/Uploadcare.Tests.csproj --configuration Release
   displayName: 'dotnet pack'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+- script:  dotnet publish -c Release
+  displayName: 'dotnet publish'
 
 - task: PublishTestResults@2
   inputs:
