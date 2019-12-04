@@ -22,6 +22,12 @@ steps:
 - script: dotnet pack Uploadcare/Uploadcare.csproj --configuration Release
   displayName: 'dotnet pack'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
