@@ -19,12 +19,8 @@ steps:
 - script: dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj --logger trx --collect "Code coverage"
   displayName: 'dotnet test'
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: 'Uploadcare/Uploadcare.csproj'
-    versioningScheme: 'off'
-    buildProperties: '--configuration Release'
+- script: dotnet pack Uploadcare.Tests/Uploadcare.Tests.csproj --configuration Release
+  displayName: 'dotnet pack'
 
 - task: PublishBuildArtifacts@1
   inputs:
