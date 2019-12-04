@@ -25,11 +25,8 @@ steps:
 - script:  dotnet publish -c Release
   displayName: 'dotnet publish'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+- publish: $(System.DefaultWorkingDirectory)/bin/$(buildConfiguration)
+  artifact: drop
 
 - task: PublishTestResults@2
   inputs:
