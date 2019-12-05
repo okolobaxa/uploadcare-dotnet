@@ -1,36 +1,72 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
 
-variables:
-  buildConfiguration: 'Release'
+- stage: 'Build'
+  variables:
+    buildConfiguration: 'Release'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  jobs:
+  - job:
+    pool:
+      vmImage: 'ubuntu-latest'
 
-- script: dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj --logger trx --collect "Code coverage"
-  displayName: 'dotnet test'
+    workspace:
+      clean: all
+      
+    steps:
+      - task: DotNetCoreCLI@2
+        displayName: "NuGet Restore"
+        inputs:
+          command: restore
+          projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Create NuGet Package - Release Version'
-  inputs:
-    command: pack
-    packDirectory: '$(Build.ArtifactStagingDirectory)/package'
-    arguments: '--configuration $(buildConfiguration)'
-    nobuild: true
+      - task: DotNetCoreCLI@2
+        displayName: "Build Solution"
+        inputs:
+          command: build
+          projects: '**/*.csproj'
+          arguments: '--configuration $(buildConfiguration)'
+    
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'test'
+          projects: 'Uploadcare.Tests/Uploadcare.Tests.csproj'
 
-- publish: '$(Build.ArtifactStagingDirectory)/package'
-  artifact: 'package'
+      - task: DotNetCoreCLI@2
+        displayName: 'Create NuGet Package - Release Version'
+        inputs:
+          command: pack
+          packDirectory: '$(Build.ArtifactStagingDirectory)/package'
+          arguments: '--configuration $(buildConfiguration)'
+          nobuild: true
 
-- task: PublishTestResults@2
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+      - publish: '$(Build.ArtifactStagingDirectory)/package'
+        artifact: 'package'
+
+      - task: PublishTestResults@2
+        inputs:
+          testRunner: VSTest
+          testResultsFiles: '**/*.trx'
+
+- stage: 'PublishReleaseNuGetPackage'
+  displayName: 'Publish Release NuGet Package'
+  dependsOn: 'PublishPrereleaseNuGetPackage'
+  condition: succeeded()
+  jobs:
+  - deployment:
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'nugetorg'
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+         - task: NuGetCommand@2
+           displayName: 'Push NuGet Package'
+           inputs:
+             command: 'push'
+             packagesToPush: '$(Pipeline.Workspace)/package/*.nupkg'
+             nuGetFeedType: 'external'
+             publishFeedCredentials: 'nuget.org (Uploadcare)'
