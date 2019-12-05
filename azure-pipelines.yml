@@ -65,8 +65,11 @@ stages:
      runOnce:
        deploy:
          steps:
-        
-         - task: NuGetCommand@2
-           inputs:
-            command: 'custom'
-            arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -ApiKey nuget-uploadcare -NonInteractive -Source https://api.nuget.org/v3/index.json -SkipDuplicate'
+          - task: NuGetToolInstaller@1
+            inputs:
+              versionSpec: '5.1'
+
+          - task: NuGetCommand@2
+            inputs:
+              command: 'custom'
+              arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -ApiKey nuget-uploadcare -NonInteractive -Source https://api.nuget.org/v3/index.json -SkipDuplicate'
