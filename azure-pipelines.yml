@@ -65,6 +65,10 @@ stages:
        deploy:
          steps:
          - task: NuGetCommand@2
+           inputs:
+             command: 'custom'
+             arguments: 'push -SkipDuplicate'
+         - task: NuGetCommand@2
            displayName: 'Push NuGet Package'
            inputs:
              command: 'push'
