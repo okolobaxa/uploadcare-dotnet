@@ -70,5 +70,5 @@ stages:
              command: 'push'
              packagesToPush: '$(Pipeline.Workspace)/package/*.nupkg'
              nuGetFeedType: 'external'
-             allowPackageConflicts: true
+             arguments: '-SkipDuplicate'
              publishFeedCredentials: 'nuget.org (Uploadcare)'
