@@ -65,9 +65,6 @@ stages:
      runOnce:
        deploy:
          steps:
-         - task: NuGetAuthenticate@0
-           inputs:
-             nuGetServiceConnections: 'nuget-uploadcare'
         
          - task: NuGetCommand@2
            inputs:
