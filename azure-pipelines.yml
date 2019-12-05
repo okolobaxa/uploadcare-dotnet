@@ -30,12 +30,13 @@ stages:
           arguments: '--configuration $(buildConfiguration)'
     
       - task: DotNetCoreCLI@2
+        displayName: "Run Tests"
         inputs:
           command: 'test'
           projects: 'Uploadcare.Tests/Uploadcare.Tests.csproj'
 
       - task: DotNetCoreCLI@2
-        displayName: 'Create NuGet Package - Release Version'
+        displayName: 'Create NuGet Package'
         inputs:
           command: pack
           packDirectory: '$(Build.ArtifactStagingDirectory)/package'
@@ -51,7 +52,7 @@ stages:
           testResultsFiles: '**/*.trx'
 
 - stage: 'PublishReleaseNuGetPackage'
-  displayName: 'Publish Release NuGet Package'
+  displayName: 'Publish NuGet Package'
   dependsOn: 'Build'
   condition: succeeded()
   jobs:
