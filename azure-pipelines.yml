@@ -65,11 +65,11 @@ stages:
      runOnce:
        deploy:
          steps:
-         - task: NuGetCommand@2
-           displayName: 'Push NuGet Package'
+         - task: NuGetAuthenticate@0
            inputs:
-             command: 'push'
-             packagesToPush: '$(Pipeline.Workspace)/package/*.nupkg'
-             nuGetFeedType: 'external'
-             arguments: '-SkipDuplicate'
-             publishFeedCredentials: 'nuget.org (Uploadcare)'
+             nuGetServiceConnections: 'nuget-uploadcare'
+        
+         - task: NuGetCommand@2
+           inputs:
+            command: 'custom'
+            arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -ApiKey nuget-uploadcare -NonInteractive -Source https://api.nuget.org/v3/index.json -SkipDuplicate'
