@@ -69,7 +69,12 @@ stages:
             inputs:
               versionSpec: '5.1'
 
+          - task: NuGetAuthenticate@0
+            inputs:
+              nuGetServiceConnections: 'nuget-uploadcare'
+              forceReinstallCredentialProvider: true
+
           - task: NuGetCommand@2
             inputs:
               command: 'custom'
-              arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -ApiKey nuget-uploadcare -NonInteractive -Source https://api.nuget.org/v3/index.json -SkipDuplicate'
+              arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -NonInteractive -Source https://api.nuget.org/v3/index.json -ApiKey key -SkipDuplicate'
