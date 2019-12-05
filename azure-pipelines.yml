@@ -19,11 +19,16 @@ steps:
 - script: dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj --logger trx --collect "Code coverage"
   displayName: 'dotnet test'
 
-- script: dotnet pack Uploadcare/Uploadcare.csproj --configuration $(buildConfiguration)  --output $(build.artifactstagingdirectory)/publish/
-  displayName: 'dotnet pack'
+- task: DotNetCoreCLI@2
+  displayName: 'Create NuGet Package - Release Version'
+  inputs:
+    command: pack
+    packDirectory: '$(Build.ArtifactStagingDirectory)/package'
+    arguments: '--configuration $(buildConfiguration)'
+    nobuild: true
 
-- publish: $(build.artifactstagingdirectory)/publish/
-  artifact: drop
+- publish: '$(Build.ArtifactStagingDirectory)/package'
+  artifact: 'package'
 
 - task: PublishTestResults@2
   inputs:
