@@ -71,5 +71,12 @@ stages:
 
           - task: NuGetCommand@2
             inputs:
+              command: 'push'
+              packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+              nuGetFeedType: 'external'
+              publishFeedCredentials: 'nuget-uploadcare'
+
+          - task: NuGetCommand@2
+            inputs:
               command: 'custom'
               arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -NonInteractive -Source "nuget-uploadcare" -ApiKey key -SkipDuplicate -NoSymbols'
