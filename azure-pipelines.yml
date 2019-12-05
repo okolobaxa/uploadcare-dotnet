@@ -72,4 +72,4 @@ stages:
           - task: NuGetCommand@2
             inputs:
               command: 'custom'
-              arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -NonInteractive -Source https://api.nuget.org/v3/index.json -ApiKey oy2dlcdegsum5aqqpesqhsyuxy4vtmbennlsb2z3cocidy -SkipDuplicate -NoSymbols'
+              arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -NonInteractive -Source "nuget-uploadcare" -ApiKey key -SkipDuplicate -NoSymbols'
