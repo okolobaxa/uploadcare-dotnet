@@ -52,7 +52,7 @@ stages:
 
 - stage: 'PublishReleaseNuGetPackage'
   displayName: 'Publish Release NuGet Package'
-  dependsOn: 'PublishPrereleaseNuGetPackage'
+  dependsOn: 'Build'
   condition: succeeded()
   jobs:
   - deployment:
