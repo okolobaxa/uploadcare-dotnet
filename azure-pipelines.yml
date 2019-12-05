@@ -25,7 +25,7 @@ steps:
 - script:  dotnet publish -c Release
   displayName: 'dotnet publish'
 
-- publish: $(System.DefaultWorkingDirectory)/bin/$(buildConfiguration)
+- publish: $(System.DefaultWorkingDirectory)/Uploadcare/bin/Release/netstandard2.0/publish/
   artifact: drop
 
 - task: PublishTestResults@2
