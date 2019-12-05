@@ -48,8 +48,9 @@ stages:
 
       - task: PublishTestResults@2
         inputs:
-          testRunner: VSTest
+          testResultsFormat: 'XUnit'
           testResultsFiles: '**/*.trx'
+          searchFolder: '$(Agent.TempDirectory)'
 
 - stage: 'PublishReleaseNuGetPackage'
   displayName: 'Publish NuGet Package'
