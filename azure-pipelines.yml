@@ -55,7 +55,7 @@ stages:
 - stage: 'PublishReleaseNuGetPackage'
   displayName: 'Publish NuGet Package'
   dependsOn: 'Build'
-  condition: succeeded()
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   
   jobs:
   - deployment:
