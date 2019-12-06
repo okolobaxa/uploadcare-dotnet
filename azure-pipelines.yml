@@ -1,24 +1,78 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
 
-variables:
-  buildConfiguration: 'Release'
+- stage: 'Build'
+  variables:
+    buildConfiguration: 'Release'
 
-steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  jobs:
+  - job:
+    pool:
+      vmImage: 'ubuntu-latest'
 
-- script: dotnet test Uploadcare.Tests/Uploadcare.Tests.csproj --logger trx --collect "Code coverage"
-  displayName: 'dotnet test'
-- task: PublishTestResults@2
-  inputs:
-    testRunner: VSTest
-    testResultsFiles: '**/*.trx'
+    workspace:
+      clean: all
+      
+    steps:
+      - task: DotNetCoreCLI@2
+        displayName: "NuGet Restore"
+        inputs:
+          command: restore
+          projects: '**/*.csproj'
+
+      - task: DotNetCoreCLI@2
+        displayName: "Build Solution"
+        inputs:
+          command: build
+          projects: '**/*.csproj'
+          arguments: '--configuration $(buildConfiguration)'
+    
+      - task: DotNetCoreCLI@2
+        displayName: "Run Tests"
+        inputs:
+          command: 'test'
+          projects: 'Uploadcare.Tests/Uploadcare.Tests.csproj'
+
+      - task: DotNetCoreCLI@2
+        displayName: 'Create NuGet Package'
+        inputs:
+          command: pack
+          packDirectory: '$(Build.ArtifactStagingDirectory)/package'
+          arguments: '--configuration $(buildConfiguration)'
+          nobuild: true
+
+      - publish: '$(Build.ArtifactStagingDirectory)/package'
+        artifact: 'package'
+
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'XUnit'
+          testResultsFiles: '**/*.trx'
+          searchFolder: '$(Agent.TempDirectory)'
+
+- stage: 'PublishReleaseNuGetPackage'
+  displayName: 'Publish NuGet Package'
+  dependsOn: 'Build'
+  condition: succeeded()
+  
+  jobs:
+  - deployment:
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'nugetorg'
+    strategy:
+     runOnce:
+       deploy:
+         steps:
+          
+          - task: NuGetToolInstaller@1
+            inputs:
+              versionSpec: '5.1'
+
+          - task: NuGetCommand@2
+            inputs:
+              command: 'custom'
+              arguments: 'push $(Pipeline.Workspace)/package/*.nupkg -NonInteractive -Source https://api.nuget.org/v3/index.json -ApiKey $(nuget-uploadcare) -SkipDuplicate -NoSymbols'
+                
