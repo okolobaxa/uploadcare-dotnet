@@ -5,8 +5,7 @@ stages:
 
 - stage: 'Build'
   variables:
-    buildConfiguration: 'Release' 
-    group: uploadcare
+    buildConfiguration: 'Release'
 
   jobs:
   - job:
@@ -56,7 +55,9 @@ stages:
 - stage: 'PublishReleaseNuGetPackage'
   displayName: 'Publish NuGet Package'
   dependsOn: 'Build'
-  condition: succeeded()
+  condition: succeeded() 
+  variables:
+    group: uploadcare
   jobs:
   - deployment:
     pool:
