@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Net.Http;
+using Uploadcare.Clients;
 using Uploadcare.Utils;
 
 namespace Uploadcare.Upload
@@ -17,7 +18,7 @@ namespace Uploadcare.Upload
         /// </summary>
         /// <param name="client"> Uploadcare client </param>
         /// <param name="expireTime"> Expiration time for signature </param>
-        public SignedFileUploader(UploadcareClient client, TimeSpan expireTime) : base(client)
+        public SignedFileUploader(IUploadcareClient client, TimeSpan expireTime) : base(client)
         {
             _expireTime = expireTime;
         }
