@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Uploadcare.Clients;
 using Uploadcare.DTO;
 using Uploadcare.Exceptions;
 using Uploadcare.Models;
@@ -25,9 +26,9 @@ namespace Uploadcare.Upload
         /// Creates a new uploader from binary data.
         /// </summary>
         /// <param name="client"> Uploadcare client </param>
-        public FileUploader(UploadcareClient client)
+        public FileUploader(IUploadcareClient client)
         {
-            Client = client;
+            Client = (UploadcareClient)client;
         }
 
         /// <summary>

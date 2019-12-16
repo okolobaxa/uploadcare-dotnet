@@ -1,15 +1,9 @@
-﻿using System;
-using Uploadcare.Clients;
+﻿using Uploadcare.Clients;
 using Uploadcare.Utils;
 
 namespace Uploadcare
 {
-    /// <summary>
-    /// Uploadcare API client.
-    /// 
-    /// Provides simple access to UploadcareFile and Project resources.
-    /// </summary>
-    public sealed class UploadcareClient : IDisposable
+    public sealed class UploadcareClient : IUploadcareClient
     {
         private readonly RequestHelper _requestHelper;
 
@@ -49,12 +43,12 @@ namespace Uploadcare
         /// Warning! Do not use in production.  All demo account files are eventually purged.
         /// </summary>
         /// <returns> A demo client </returns>
-        public static UploadcareClient DemoClient()
+        public static IUploadcareClient DemoClient()
         {
             return new UploadcareClient("demopublickey", "demoprivatekey");
         }
 
-        public static UploadcareClient DemoClientWithSignedAuth()
+        public static IUploadcareClient DemoClientWithSignedAuth()
         {
             return new UploadcareClient("demopublickey", "demoprivatekey", UploadcareAuthType.Signed);
         }
@@ -67,22 +61,10 @@ namespace Uploadcare
 
         public IWebhooksClient Webhooks { get; }
 
-        /// <summary>
-        /// Returns the public key.
-        /// </summary>
-        /// <returns> Public key </returns>
         public string PublicKey => Connection.PublicKey;
 
-        /// <summary>
-        /// Returns the private key.
-        /// </summary>
-        /// <returns> Private key </returns>
         public string PrivateKey => Connection.PrivateKey;
 
-        /// <summary>
-        /// Returns true, if simple authentication is used.
-        /// </summary>
-        /// <returns> true, if simple authentication is used, false otherwise </returns>
         public UploadcareAuthType AuthType => Connection.AuthType;
 
         public IUploadcareConnection Connection { get; }

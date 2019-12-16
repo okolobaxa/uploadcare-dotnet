@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Uploadcare.Clients;
 using Uploadcare.DTO;
 using Uploadcare.Exceptions;
 using Uploadcare.Models;
@@ -23,9 +24,9 @@ namespace Uploadcare.Upload
         /// </summary>
         /// <param name="client"> Uploadcare client </param>
         /// <param name="pollingIntervalMsec"> Time interval for polling upload progress </param>
-        public UrlUploader(UploadcareClient client, int pollingIntervalMsec = 500)
+        public UrlUploader(IUploadcareClient client, int pollingIntervalMsec = 500)
         {
-            _client = client;
+            _client = (UploadcareClient)client;
             _pollingIntervalMsec = pollingIntervalMsec;
         }
 
