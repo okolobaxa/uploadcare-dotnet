@@ -23,7 +23,15 @@ namespace Uploadcare.Tests.Utils
 			Assert.Equal("https://ucarecdn.com/" + FILE_ID + "/", path);
 		}
 
-        [Fact]
+		[Fact]
+		public void cdnpathbuilder_fileUrl__static_assert()
+		{
+			var path = CdnPathBuilder.Build(FILE_ID).ToString();
+
+			Assert.Equal("https://ucarecdn.com/" + FILE_ID + "/", path);
+		}
+
+		[Fact]
         public void cdnpathbuilder_allOperations_assert()
 		{
             var fileMoq = new Mock<UploadcareFile>();

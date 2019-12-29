@@ -2,14 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Authors>Anton Kheistver;Diego Ernesto Farías</Authors>
+    <Authors>Anton Kheistver and contributors</Authors>
     <Description>C# library for accessing Uploadcare API</Description>
     <PackageId>UploadcareCSharp</PackageId>
     <PackageProjectUrl>https://github.com/okolobaxa/uploadcare-dotnet</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>uploadcare;upload;file</PackageTags>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <Company>Anton Kheistver and contributors</Company>
   </PropertyGroup>
 
   <ItemGroup>

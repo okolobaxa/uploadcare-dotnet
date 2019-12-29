@@ -8,7 +8,7 @@ namespace Uploadcare
 {
 	public sealed class CdnPathBuilder
 	{
-		private readonly StringBuilder _sb = new StringBuilder(Urls.CDN_BASE + "/");
+		private readonly StringBuilder _sb = new StringBuilder();
 
 		/// <summary>
 		/// Creates a new CDN path builder for some image UploadcareFile.
@@ -17,7 +17,7 @@ namespace Uploadcare
 		/// </param>
 		public CdnPathBuilder(UploadcareFile uploadcareFile)
 		{
-			_sb.Append(uploadcareFile.FileId);
+			_sb.Append(Urls.CdnFile(uploadcareFile.FileId));
 		}
 
 	    /// <summary>
@@ -25,9 +25,18 @@ namespace Uploadcare
 	    /// </summary>
         /// <param name="fileId">Image id to be used for the path</param>
 	    public CdnPathBuilder(string fileId)
-        {
-            _sb.Append(fileId);
-        }
+		{
+			_sb.Append(Urls.CdnFile(fileId));
+		}
+
+		/// <summary>
+		/// Creates a new CDN path builder for some image id.
+		/// </summary>
+		/// <param name="cdnUri">CDN path of file</param>
+		public CdnPathBuilder(Uri cdnUri)
+		{
+			_sb.Append(cdnUri);
+		}
 
 		private static void DimensionGuard(int dim)
 		{
@@ -61,8 +70,9 @@ namespace Uploadcare
 		public CdnPathBuilder Crop(int width, int height)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/crop/").Append(width).Append("x").Append(height);
+			_sb.Append("-/crop/").Append(width).Append("x").Append(height);
 
 			return this;
 		}
@@ -75,8 +85,9 @@ namespace Uploadcare
 		public CdnPathBuilder CropCenter(int width, int height)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/crop/").Append(width).Append("x").Append(height).Append("/center");
+			_sb.Append("-/crop/").Append(width).Append("x").Append(height).Append("/center");
 
 			return this;
 		}
@@ -90,8 +101,9 @@ namespace Uploadcare
 		public CdnPathBuilder CropColor(int width, int height, Color color)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/crop/").Append(width).Append("x").Append(height).Append("/").Append(ColorToHex(color));
+			_sb.Append("-/crop/").Append(width).Append("x").Append(height).Append("/").Append(ColorToHex(color));
 
 			return this;
 		}
@@ -105,8 +117,9 @@ namespace Uploadcare
 		public CdnPathBuilder CropCenterColor(int width, int height, Color color)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/crop/").Append(width).Append("x").Append(height).Append("/center/").Append(ColorToHex(color));
+			_sb.Append("-/crop/").Append(width).Append("x").Append(height).Append("/center/").Append(ColorToHex(color));
 
 			return this;
 		}
@@ -118,8 +131,9 @@ namespace Uploadcare
 		public CdnPathBuilder ResizeWidth(int width)
 		{
 			DimensionGuard(width);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/resize/").Append(width).Append("x");
+			_sb.Append("-/resize/").Append(width).Append("x");
 
 			return this;
 		}
@@ -131,8 +145,9 @@ namespace Uploadcare
 		public CdnPathBuilder ResizeHeight(int height)
 		{
 			DimensionGuard(height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/resize/x").Append(height);
+			_sb.Append("-/resize/x").Append(height);
 
 			return this;
 		}
@@ -145,8 +160,9 @@ namespace Uploadcare
 		public CdnPathBuilder Resize(int width, int height)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/resize/").Append(width).Append("x").Append(height);
+			_sb.Append("-/resize/").Append(width).Append("x").Append(height);
 
 			return this;
 		}
@@ -160,8 +176,9 @@ namespace Uploadcare
 		public CdnPathBuilder ScaleCrop(int width, int height)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/scale_crop/").Append(width).Append("x").Append(height);
+			_sb.Append("-/scale_crop/").Append(width).Append("x").Append(height);
 
 			return this;
 		}
@@ -175,8 +192,9 @@ namespace Uploadcare
 		public CdnPathBuilder ScaleCropCenter(int width, int height)
 		{
 			DimensionsGuard(width, height);
+			AppendTrailingSlash();
 
-			_sb.Append("/-/scale_crop/").Append(width).Append("x").Append(height).Append("/center");
+			_sb.Append("-/scale_crop/").Append(width).Append("x").Append(height).Append("/center");
 
 			return this;
 		}
@@ -186,7 +204,9 @@ namespace Uploadcare
 		/// </summary>
 		public CdnPathBuilder Flip()
 		{
-			_sb.Append("/-/effect/flip");
+			AppendTrailingSlash();
+
+			_sb.Append("-/effect/flip");
 
 			return this;
 		}
@@ -196,7 +216,9 @@ namespace Uploadcare
 		/// </summary>
 		public CdnPathBuilder Grayscale()
 		{
-			_sb.Append("/-/effect/grayscale");
+			AppendTrailingSlash();
+
+			_sb.Append("-/effect/grayscale");
 
 			return this;
 		}
@@ -206,7 +228,9 @@ namespace Uploadcare
 		/// </summary>
 		public CdnPathBuilder Invert()
 		{
-			_sb.Append("/-/effect/invert");
+			AppendTrailingSlash();
+
+			_sb.Append("-/effect/invert");
 
 			return this;
 		}
@@ -216,7 +240,9 @@ namespace Uploadcare
 		/// </summary>
 		public CdnPathBuilder Mirror()
 		{
-			_sb.Append("/-/effect/mirror");
+			AppendTrailingSlash();
+
+			_sb.Append("-/effect/mirror");
 
 			return this;
 		}
@@ -231,7 +257,22 @@ namespace Uploadcare
 		/// </returns>
 		public string Build()
 		{
-			return _sb.Append("/").ToString();
+			AppendTrailingSlash();
+
+			return _sb.ToString();
+		}
+
+		private void AppendTrailingSlash()
+		{
+			if (_sb[_sb.Length - 1] != '/')
+			{
+				_sb.Append("/");
+			}
+		}
+
+		public static Uri Build(string fileId)
+		{
+			return Urls.CdnFile(fileId);
 		}
 	}
 }
