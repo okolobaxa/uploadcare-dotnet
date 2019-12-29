@@ -8,6 +8,9 @@ namespace Uploadcare.Utils
         public const string CDN_BASE = "https://ucarecdn.com";
         public const string UPLOAD_BASE = "https://upload.uploadcare.com";
 
+
+        public static Uri CdnFile(string fileId) => new Uri($"{CDN_BASE}/{fileId}/");
+
         public static Uri ApiProject => new Uri($"{API_BASE}/project/");
 
         public static Uri ApiFile(string fileId) => new Uri($"{API_BASE}/files/{fileId}/");
