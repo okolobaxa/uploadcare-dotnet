@@ -173,12 +173,18 @@ namespace Uploadcare
 		/// </summary>
 		/// <param name="width"> New width </param>
 		/// <param name="height"> New height </param>
-		public CdnPathBuilder ScaleCrop(int width, int height)
+		/// <param name="smart"> Use AI to find crop position </param>
+		public CdnPathBuilder ScaleCrop(int width, int height, bool smart = false)
 		{
 			DimensionsGuard(width, height);
 			AppendTrailingSlash();
 
 			_sb.Append("-/scale_crop/").Append(width).Append("x").Append(height);
+
+			if (smart)
+			{
+				_sb.Append("/smart/");
+			}
 
 			return this;
 		}

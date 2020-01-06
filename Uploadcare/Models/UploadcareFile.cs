@@ -20,7 +20,7 @@ namespace Uploadcare.Models
 
         public bool IsReady => _fileData.IsReady;
 
-        public string MimeType => _fileData.Uuid;
+        public string MimeType => _fileData.MimeType;
 
         public string OriginalFileUrl => _fileData.OriginalFileUrl;
 
