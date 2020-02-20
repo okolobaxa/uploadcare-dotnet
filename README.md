@@ -8,7 +8,7 @@ C# library for Uploadcare. Uploadcare is a content delivery platform that optimi
 
 Supported features:
 
-- Full Uploadcare API v0.5 (file, group, project and webhook)
+- Full Uploadcare API v0.5 (file, group, project and webhook, face detection)
 - CDN path builder
 - File uploads from disk, byteArray, and URL
 - Signed uploads

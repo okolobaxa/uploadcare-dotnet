@@ -2,7 +2,8 @@
 {
     public enum UploadcareAuthType
     {
-        Simple = 0,
-        Signed = 1
+        NoAuth = 0,
+        Simple = 1,
+        Signed = 2
     }
 }

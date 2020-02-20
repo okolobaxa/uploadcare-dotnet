@@ -17,6 +17,8 @@ namespace Uploadcare.Clients
 
         IWebhooksClient Webhooks { get; }
 
+        IFaceDetectionClient FaceDetection { get; }
+
         /// <summary>
         /// Returns the public key.
         /// </summary>
