@@ -14,6 +14,8 @@ namespace Uploadcare.Utils
         public static Uri ApiProject => new Uri($"{API_BASE}/project/");
 
         public static Uri ApiFile(string fileId) => new Uri($"{API_BASE}/files/{fileId}/");
+        
+        public static Uri CdnFileDetectFace(string fileId) => new Uri($"{CDN_BASE}/{fileId}/detect_faces/");
 
         public static Uri ApiFiles => new Uri($"{API_BASE}/files/");
 

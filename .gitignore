@@ -197,3 +197,4 @@ FakesAssemblies/
 
 #Visual Studio Code files
 .vscode
+/.idea

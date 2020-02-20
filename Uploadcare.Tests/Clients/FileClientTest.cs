@@ -187,5 +187,19 @@ namespace Uploadcare.Tests.Clients
             Assert.Contains(files, x => x.FileId == uploadedFileInfo2.FileId);
             Assert.Contains(problems, x => x.Key == badFileId);
         }
+
+        [Fact]
+        public async Task client_detect_faces()
+        {
+            var client = UploadcareClient.DemoClientWithSignedAuth();
+            var file = new FileInfo("Lenna.png");
+
+            var uploader = new FileUploader(client);
+            var uploadedFileInfo = await uploader.Upload(file, false);
+
+            var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.FileId);
+
+            Assert.NotEmpty(faces);
+        }
     }
 }

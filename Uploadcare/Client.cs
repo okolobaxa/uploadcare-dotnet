@@ -24,6 +24,7 @@ namespace Uploadcare
             Files = new FilesClient(_requestHelper); 
             Groups = new GroupsClient(_requestHelper);
             Webhooks = new WebhookClient(_requestHelper);
+            FaceDetection = new FaceDetectionClient();
         }
 
         public UploadcareClient(IUploadcareConnection connection)
@@ -36,6 +37,7 @@ namespace Uploadcare
             Files = new FilesClient(_requestHelper);
             Groups = new GroupsClient(_requestHelper);
             Webhooks = new WebhookClient(_requestHelper);
+            FaceDetection = new FaceDetectionClient();
         }
 
         /// <summary>
@@ -60,6 +62,8 @@ namespace Uploadcare
         public IGroupsClient Groups { get; }
 
         public IWebhooksClient Webhooks { get; }
+
+        public IFaceDetectionClient FaceDetection { get; }
 
         public string PublicKey => Connection.PublicKey;
 
