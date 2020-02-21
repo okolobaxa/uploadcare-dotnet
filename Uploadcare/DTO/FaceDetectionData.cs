@@ -28,7 +28,7 @@ namespace Uploadcare.DTO
         public DateTime? DatetimeOriginal { get; set; }
 
         [JsonProperty("dpi")]
-        public string DPI { get; set; }
+        public List<int> DPI { get; set; }
 
         [JsonProperty("faces")]
         public List<List<int>> Faces { get; set; }
