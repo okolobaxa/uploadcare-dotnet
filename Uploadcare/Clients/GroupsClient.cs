@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Uploadcare.DTO;
 using Uploadcare.Models;
 using Uploadcare.Utils;
 
@@ -26,9 +25,9 @@ namespace Uploadcare.Clients
 
             var url = Urls.ApiGroup(groupId);
 
-            var result = await _requestHelper.Get<GroupData>(url, default);
+            var result = await _requestHelper.Get<UploadcareGroup>(url, default);
 
-            return new UploadcareGroup(result);
+            return result;
         }
 
         public async Task<UploadcareGroup> StoreAsync(string groupId)
@@ -40,9 +39,9 @@ namespace Uploadcare.Clients
 
             var url = Urls.ApiGroupsStorage(groupId);
 
-            var result = await _requestHelper.Post<GroupData>(url);
+            var result = await _requestHelper.Post<UploadcareGroup>(url);
 
-            return new UploadcareGroup(result);
+            return result;
         }
 
         public async Task<UploadcareGroup> CreateAsync(IReadOnlyCollection<string> fileIds)
@@ -73,9 +72,9 @@ namespace Uploadcare.Clients
                 i++;
             }
 
-            var result = await _requestHelper.PostFormData<GroupData>(url, formData);
+            var result = await _requestHelper.PostFormData<UploadcareGroup>(url, formData);
 
-            return new UploadcareGroup(result);
+            return result;
         }
 
         public GroupsQueryBuilder GetGroups()

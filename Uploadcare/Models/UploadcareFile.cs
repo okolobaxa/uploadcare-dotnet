@@ -1,46 +1,49 @@
 ﻿using System;
-using Uploadcare.DTO;
+using System.Text.Json.Serialization;
 
 namespace Uploadcare.Models
 {
     public class UploadcareFile
     {
-        private readonly FileData _fileData;
+        [JsonPropertyName("uuid")]
+        public virtual string Uuid { get; set; }
 
-        internal UploadcareFile(FileData fileData)
-        {
-            _fileData = fileData;
-        }
+        [JsonPropertyName("datetime_removed")] 
+        public DateTime? DatetimeRemoved { get; set; }
 
-        protected UploadcareFile() { }
+        [JsonPropertyName("datetime_stored")] 
+        public DateTime? DatetimeStored { get; set; }
 
-        public virtual string FileId => _fileData.Uuid;
+        [JsonPropertyName("datetime_uploaded")] 
+        public DateTime DatetimeUploaded { get; set; }
 
-        public bool IsImage => _fileData.IsImage;
+        [JsonPropertyName("is_image")] 
+        public bool IsImage { get; set; }
 
-        public bool IsReady => _fileData.IsReady;
+        [JsonPropertyName("is_ready")] 
+        public bool IsReady { get; set; }
 
-        public string MimeType => _fileData.MimeType;
+        [JsonPropertyName("mime_type")] 
+        public string MimeType { get; set; }
 
-        public string OriginalFileUrl => _fileData.OriginalFileUrl;
+        [JsonPropertyName("original_file_url")] 
+        public string OriginalFileUrl { get; set; }
 
-        public string OriginalFilename => _fileData.OriginalFilename;
+        [JsonPropertyName("original_filename")] 
+        public string OriginalFilename { get; set; }
 
-        public string Url => _fileData.Url;
+        [JsonPropertyName("size")] 
+        public long Size { get; set; }
 
-        public bool Stored => _fileData.DatetimeStored.HasValue && StoreAt != DateTime.MinValue;
+        [JsonPropertyName("url")] 
+        public string Url { get; set; }
 
-        public bool Removed => _fileData.DatetimeRemoved.HasValue && RemovedAt != DateTime.MinValue;
+        [JsonPropertyName("image_info")] 
+        public ImageInfo ImageInfoData { get; set; }
 
-        public long Size => _fileData.Size;
+        public bool Stored => DatetimeStored.HasValue && DatetimeStored != DateTime.MinValue;
 
-        public DateTime? RemovedAt => _fileData.DatetimeRemoved;
-
-        public DateTime? StoreAt => _fileData.DatetimeStored;
-
-        public DateTime UploadAt => _fileData.DatetimeUploaded;
-
-        public UploadcareImageInfo ImageInfo => IsImage ? new UploadcareImageInfo(_fileData.ImageInfoData) : null;
+        public bool Removed => DatetimeRemoved.HasValue && DatetimeRemoved != DateTime.MinValue;
 
         /// <summary>
         /// Creates a CDN path builder for this file.
@@ -52,37 +55,30 @@ namespace Uploadcare.Models
         }
     }
 
-
-    public class UploadcareImageInfo
+    public class ImageInfo
     {
-        private readonly ImageInfoData _data;
+        [JsonPropertyName("height")]
+        public int Height { get; set; }
 
-        internal UploadcareImageInfo(ImageInfoData data)
-        {
-            _data = data;
-        }
+        [JsonPropertyName("width")]
+        public int Width { get; set; }
 
-        public string Height => _data.Height;
+        [JsonPropertyName("geo_location")]
+        public GeoLocationInfo GeoLocation { get; set; }
 
-        public string Width => _data.Width;
+        [JsonPropertyName("datetime_original")]
+        public DateTime? DatetimeOriginal { get; set; }
 
-        public DateTime? DatetimeOriginal => _data.DatetimeOriginal;
-
-        public string Format => _data.Format;
-        public UploadcareGeolocation GeoLocation => new UploadcareGeolocation(_data.GeoLocation);
+        [JsonPropertyName("format")]
+        public string Format { get; set; }
     }
 
-    public class UploadcareGeolocation
+    public class GeoLocationInfo
     {
-        private readonly GeoLocationData _data;
+        [JsonPropertyName("latitude")]
+        public decimal Latitude { get; set; }
 
-        internal UploadcareGeolocation(GeoLocationData data)
-        {
-            _data = data;
-        }
-
-        public string Latitude => _data.Latitude;
-
-        public string Longitude => _data.Longitude;
+        [JsonPropertyName("longitude")]
+        public decimal Longitude { get; set; }
     }
 }

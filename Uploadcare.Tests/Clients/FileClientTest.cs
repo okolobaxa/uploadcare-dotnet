@@ -18,9 +18,9 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
 
-            var result = await client.Files.GetAsync(uploadedFileInfo.FileId);
+            var result = await client.Files.GetAsync(uploadedFileInfo.Uuid);
 
-            Assert.NotNull(result.FileId);
+            Assert.NotNull(result.Uuid);
         }
 
         [Fact]
@@ -32,9 +32,9 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
 
-            var result = await client.Files.StoreAsync(uploadedFileInfo.FileId);
+            var result = await client.Files.StoreAsync(uploadedFileInfo.Uuid);
 
-            Assert.NotNull(result.FileId);
+            Assert.NotNull(result.Uuid);
             Assert.True(result.Stored);
         }
 
@@ -47,10 +47,10 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
 
-            await client.Files.DeleteAsync(uploadedFileInfo.FileId);
-            var result = await client.Files.GetAsync(uploadedFileInfo.FileId);
+            await client.Files.DeleteAsync(uploadedFileInfo.Uuid);
+            var result = await client.Files.GetAsync(uploadedFileInfo.Uuid);
 
-            Assert.NotNull(result.FileId);
+            Assert.NotNull(result.Uuid);
             Assert.True(result.Removed);
         }
 
@@ -139,11 +139,11 @@ namespace Uploadcare.Tests.Clients
 
                 while (!uploadedFileInfo.IsReady)
                 {
-                    uploadedFileInfo = await client.Files.GetAsync(uploadedFileInfo.FileId);
+                    uploadedFileInfo = await client.Files.GetAsync(uploadedFileInfo.Uuid);
                 }
             }
 
-            var newFileId = client.Files.CopyAsync(uploadedFileInfo.FileId).GetAwaiter().GetResult();
+            var newFileId = client.Files.CopyAsync(uploadedFileInfo.Uuid).GetAwaiter().GetResult();
 
             Assert.NotNull(newFileId);
         }
@@ -159,12 +159,12 @@ namespace Uploadcare.Tests.Clients
             var uploadedFileInfo2 = await uploader.Upload(file, false);
             var badFileId = "4j334o01-8bs3";
 
-            var fileIds = new[] { uploadedFileInfo1.FileId, uploadedFileInfo2.FileId, badFileId };
+            var fileIds = new[] { uploadedFileInfo1.Uuid, uploadedFileInfo2.Uuid, badFileId };
 
             var (files, problems) = await client.Files.StoreAsync(fileIds.ToList());
 
-            Assert.Contains(files, x => x.FileId == uploadedFileInfo1.FileId);
-            Assert.Contains(files, x => x.FileId == uploadedFileInfo2.FileId);
+            Assert.Contains(files, x => x.Uuid == uploadedFileInfo1.Uuid);
+            Assert.Contains(files, x => x.Uuid == uploadedFileInfo2.Uuid);
             Assert.Contains(problems, x => x.Key == badFileId);
         }
 
@@ -179,12 +179,12 @@ namespace Uploadcare.Tests.Clients
             var uploadedFileInfo2 = await uploader.Upload(file, false);
             var badFileId = "4j334o01-8bs3";
 
-            var fileIds = new[] { uploadedFileInfo1.FileId, uploadedFileInfo2.FileId, badFileId };
+            var fileIds = new[] { uploadedFileInfo1.Uuid, uploadedFileInfo2.Uuid, badFileId };
 
             var (files, problems) = await client.Files.DeleteAsync(fileIds.ToList());
 
-            Assert.Contains(files, x => x.FileId == uploadedFileInfo1.FileId);
-            Assert.Contains(files, x => x.FileId == uploadedFileInfo2.FileId);
+            Assert.Contains(files, x => x.Uuid == uploadedFileInfo1.Uuid);
+            Assert.Contains(files, x => x.Uuid == uploadedFileInfo2.Uuid);
             Assert.Contains(problems, x => x.Key == badFileId);
         }
 
@@ -197,7 +197,7 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file, false);
 
-            var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.FileId);
+            var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.Uuid);
 
             Assert.NotEmpty(faces);
         }

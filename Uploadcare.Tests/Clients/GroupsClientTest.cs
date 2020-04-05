@@ -31,7 +31,7 @@ namespace Uploadcare.Tests.Clients
             var result = await client.Groups.StoreAsync(group.Id);
 
             Assert.NotNull(result);
-            Assert.NotNull(result.StoreDate);
+            Assert.NotNull(result.DatetimeStored);
         }
 
 
@@ -80,12 +80,12 @@ namespace Uploadcare.Tests.Clients
             var result1 = await uploader.Upload(file);
             var result2 = await uploader.Upload(file);
 
-            var group = await client.Groups.CreateAsync(new[] { result1.FileId, result2.FileId });
+            var group = await client.Groups.CreateAsync(new[] { result1.Uuid, result2.Uuid });
                        
             Assert.True(group.FilesCount == 2);
 
-            Assert.Contains(group.Files, x => x.FileId == result1.FileId);
-            Assert.Contains(group.Files, x => x.FileId == result2.FileId);
+            Assert.Contains(group.Files, x => x.Uuid == result1.Uuid);
+            Assert.Contains(group.Files, x => x.Uuid == result2.Uuid);
         }
     }
 }

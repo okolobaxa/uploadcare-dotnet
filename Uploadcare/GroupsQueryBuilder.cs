@@ -41,7 +41,7 @@ namespace Uploadcare
         public GroupsQueryBuilder OrderByCreateDate(DateTime? from = null)
         {
             _parameters.Add(new GroupOrderingParameter(EGroupOrderBy.DatetimeCreated));
-            
+
             if (from.HasValue)
             {
                 _parameters.Add(new OrderingFromDateParameter(from.Value));
@@ -53,7 +53,7 @@ namespace Uploadcare
         public GroupsQueryBuilder OrderByCreateDateDesc(DateTime? from = null)
         {
             _parameters.Add(new GroupOrderingParameter(EGroupOrderBy.DatetimeCreatedDesc));
-            
+
             if (from.HasValue)
             {
                 _parameters.Add(new OrderingFromDateParameter(from.Value));
@@ -66,7 +66,7 @@ namespace Uploadcare
         {
             var url = Urls.ApiGroups;
 
-            var result = _requestHelper.ExecutePaginatedQuery(url, _parameters, new GroupPageData(), new GroupDataWrapper());
+            var result = _requestHelper.ExecutePaginatedQuery<UploadcareGroup, GroupPageData>(url, _parameters, new GroupPageData());
 
             return result;
         }

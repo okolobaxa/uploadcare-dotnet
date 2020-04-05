@@ -1,33 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Uploadcare.DTO;
+using System.Text.Json.Serialization;
 
 namespace Uploadcare.Models
 {
     public class UploadcareGroup
     {
-        private readonly GroupData _groupData;
+        [JsonPropertyName("id")] 
+        public string Id { get; set; }
 
-        internal UploadcareGroup(GroupData groupData)
-        {
-            _groupData = groupData;
-        }
+        [JsonPropertyName("datetime_created")] 
+        public DateTime DatetimeCreated { get; set; }
 
-        protected UploadcareGroup() { }
+        [JsonPropertyName("datetime_stored")] 
+        public DateTime? DatetimeStored { get; set; }
 
-        public string Id => _groupData.Id;
+        [JsonPropertyName("files_count")] 
+        public long FilesCount { get; set; }
 
-        public DateTime CreateDate => _groupData.DatetimeCreated;
+        [JsonPropertyName("cdn_url")] 
+        public string CdnUrl { get; set; }
 
-        public DateTime? StoreDate => _groupData.DatetimeStored;
+        [JsonPropertyName("files")] 
+        public List<UploadcareFile> Files { get; set; }
 
-        public long FilesCount => _groupData.FilesCount;
-
-        public string CdnUrl => _groupData.CdnUrl;
-
-        public string Url => _groupData.Url;
-
-        public IEnumerable<UploadcareFile> Files => _groupData.Files.Select(x => new UploadcareFile(x));
+        [JsonPropertyName("url")] 
+        public string Url { get; set; }
     }
 }

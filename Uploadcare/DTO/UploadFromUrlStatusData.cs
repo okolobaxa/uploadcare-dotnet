@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Uploadcare.DTO
 {
     internal class UploadFromUrlStatusData
     {
-        [JsonProperty("status")]
-        public string Status { get; private set; }
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
         
-        [JsonProperty("file_id")]
-        public string FileId { get; private set; }
+        [JsonPropertyName("file_id")]
+        public string FileId { get; set; }
     }
 }

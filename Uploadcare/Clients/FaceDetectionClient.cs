@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Uploadcare.DTO;
 using Uploadcare.Models;
 using Uploadcare.Utils;
 
@@ -28,16 +26,9 @@ namespace Uploadcare.Clients
 
             var url = Urls.CdnFileDetectFace(fileId);
 
-            var result = await _requestHelper.Get<FaceDetectionData>(url, default);
+            var result = await _requestHelper.Get<UploadcareFaceDetection>(url, default);
 
-            if (result.Faces != null && result.Faces.Any())
-            {
-                var faces = result.Faces.Select(x => new UploadcareFace(x));
-
-                return faces;
-            }
-
-            return Array.Empty<UploadcareFace>();
+            return result.Faces != null ? result.Faces.ToArray() : Array.Empty<UploadcareFace>();
         }
     }
 }

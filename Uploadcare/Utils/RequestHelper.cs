@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Uploadcare.Exceptions;
 using Uploadcare.Utils.UrlParameters;
 
@@ -31,9 +30,9 @@ namespace Uploadcare.Utils
 
         public IUploadcareConnection GetConnection() => _connection;
 
-        public IEnumerable<T> ExecutePaginatedQuery<T, TU, TK>(Uri url, IReadOnlyCollection<IUrlParameter> urlParameters, TK pageData, IDataWrapper<T, TU> dataWrapper)
+        public IEnumerable<T> ExecutePaginatedQuery<T, TK>(Uri url, IReadOnlyCollection<IUrlParameter> urlParameters, TK pageData)
         {
-            return new PagedDataFilesEnumerator<T, TU, TK>(this, url, urlParameters, pageData, dataWrapper);
+            return new PagedDataFilesEnumerator<T, TK>(this, url, urlParameters, pageData);
         }
 
         public async Task<TOut> PostContent<TOut>(Uri uri, HttpContent requestContent)
@@ -98,7 +97,7 @@ namespace Uploadcare.Utils
 
         public async Task<TOut> Put<TIn, TOut>(Uri uri, TIn data)
         {
-            var stringData = JsonConvert.SerializeObject(data);
+            var stringData = JsonSerializer.Serialize(data);
             var content = new StringContent(stringData, Encoding.UTF8, "application/json");
 
             var responseMessage = await Send(uri, HttpMethod.Put, content);
@@ -110,7 +109,7 @@ namespace Uploadcare.Utils
 
         public async Task<TOut> Delete<TIn, TOut>(Uri uri, TIn data)
         {
-            var stringData = JsonConvert.SerializeObject(data);
+            var stringData = JsonSerializer.Serialize(data);
             var content = new StringContent(stringData, Encoding.UTF8, "application/json");
 
             var responseMessage = await Send(uri, HttpMethod.Delete, content);
@@ -172,19 +171,19 @@ namespace Uploadcare.Utils
 
             var body = await response.Content.ReadAsStringAsync();
 
-            JObject jObject;
+            JsonDocument jObject;
 
             try
             {
-                jObject = JObject.Parse(body);
+                jObject = JsonDocument.Parse(body);
             }
             catch (JsonException)
             {
                 throw new UploadcareInvalidResponseException(body);
             }
 
-            var errorToken = jObject["detail"];
-            if (errorToken == null)
+            var errorToken = jObject.RootElement.GetProperty("detail");
+            if (errorToken.ValueKind == JsonValueKind.Null)
             {
                 throw new UploadcareInvalidResponseException(body);
             }
@@ -193,10 +192,10 @@ namespace Uploadcare.Utils
             {
                 case HttpStatusCode.Unauthorized:
                 case HttpStatusCode.Forbidden:
-                    throw new UploadcareAuthenticationException(errorToken.ToString());
+                    throw new UploadcareAuthenticationException(errorToken.GetString());
                 case HttpStatusCode.BadRequest:
                 case HttpStatusCode.NotFound:
-                    throw new UploadcareInvalidRequestException(errorToken.ToString());
+                    throw new UploadcareInvalidRequestException(errorToken.GetString());
             }
 
             throw new UploadcareApiException("Unknown exception during an API call, response:" + body);
@@ -208,9 +207,9 @@ namespace Uploadcare.Utils
             {
                 if (responseContent == null) throw new UploadcareInvalidResponseException("Received empty response");
 
-                var responseBody = await responseContent.ReadAsStringAsync().ConfigureAwait(false);
+                var responseBody = await responseContent.ReadAsStreamAsync();
 
-                return JsonConvert.DeserializeObject<TOut>(responseBody);
+                return await JsonSerializer.DeserializeAsync<TOut>(responseBody);
             }
         }
 

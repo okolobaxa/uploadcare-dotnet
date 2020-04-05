@@ -1,6 +1,8 @@
-﻿namespace Uploadcare.DTO
+﻿using Uploadcare.Models;
+
+namespace Uploadcare.DTO
 {
-    internal class FilePageData : BasePageData<FileData>
+    internal class FilePageData : BasePageData<UploadcareFile>
     {
     }
 }

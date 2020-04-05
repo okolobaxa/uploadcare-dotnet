@@ -1,0 +1,27 @@
+﻿{
+  "id":"e7610aef-aa44-4959-838f-ebcb91339544",
+  "color_mode":"RGB",
+  "orientation":null,
+  "format":"PNG",
+  "sequence":false,
+  "height":512,
+  "width":512,
+  "geo_location":null,
+  "datetime_original":null,
+  "dpi":null,
+  "faces":[
+    [
+      208,
+      183,
+      146,
+      207
+    ],
+    [
+      463,
+      325,
+      654,
+      256
+    ]
+  ],
+  "test": ""
+}

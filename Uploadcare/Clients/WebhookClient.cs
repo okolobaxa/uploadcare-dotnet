@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Uploadcare.DTO;
 using Uploadcare.Models;
 using Uploadcare.Utils;
 
@@ -21,9 +19,9 @@ namespace Uploadcare.Clients
         {
             var url = Urls.ApiWebhooks;
 
-            var result = await _requestHelper.Get<List<WebhookData>>(url, default);
+            var result = await _requestHelper.Get<List<UploadcareWebhook>>(url, default);
 
-            return result.Select(x => new UploadcareWebhook(x));
+            return result;
         }
 
         public async Task<UploadcareWebhook> SubscribeAsync(string eventType, string targetUrl, bool isActive = true)
@@ -47,9 +45,9 @@ namespace Uploadcare.Clients
                 {"is_active", isActive.ToString()}
             };
 
-            var result = await _requestHelper.PostFormData<WebhookData>(url, formData);
+            var result = await _requestHelper.PostFormData<UploadcareWebhook>(url, formData);
 
-            return new UploadcareWebhook(result);
+            return result;
         }
 
         public async Task UnsubscribeAsync(string eventType, string targetUrl)
@@ -95,9 +93,9 @@ namespace Uploadcare.Clients
             if (isActive != null)
                 formData.Add("is_active", isActive.Value.ToString());
 
-            var result = await _requestHelper.PostFormData<WebhookData>(url, formData);
+            var result = await _requestHelper.PostFormData<UploadcareWebhook>(url, formData);
 
-            return new UploadcareWebhook(result);
+            return result;
         }
     }
 }

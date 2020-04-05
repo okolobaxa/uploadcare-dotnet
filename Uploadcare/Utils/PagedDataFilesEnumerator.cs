@@ -7,25 +7,23 @@ using Uploadcare.Utils.UrlParameters;
 
 namespace Uploadcare.Utils
 {
-    internal class PagedDataFilesEnumerator<T, TU, TK> : IEnumerator<T>, IEnumerable<T>
+    internal class PagedDataFilesEnumerator<T, TK> : IEnumerator<T>, IEnumerable<T>
     {
         private readonly RequestHelper _requestHelper;
         private readonly Uri _url;
         private readonly IReadOnlyCollection<IUrlParameter> _urlParameters;
         private readonly TK _dataClass;
-        private readonly IDataWrapper<T, TU> _dataWrapper;
         private int _page;
         private int _total;
         private bool _more;
-        private IEnumerator<TU> _pageIterator;
+        private IEnumerator<T> _pageIterator;
 
-        public PagedDataFilesEnumerator(RequestHelper requestHelper, Uri url, IReadOnlyCollection<IUrlParameter> urlParameters, TK dataClass, IDataWrapper<T, TU> dataWrapper)
+        public PagedDataFilesEnumerator(RequestHelper requestHelper, Uri url, IReadOnlyCollection<IUrlParameter> urlParameters, TK dataClass)
         {
             _requestHelper = requestHelper;
             _url = url;
             _urlParameters = urlParameters;
             _dataClass = dataClass;
-            _dataWrapper = dataWrapper;
 
             GetNext();
         }
@@ -41,7 +39,7 @@ namespace Uploadcare.Utils
             builder.Query = ToQueryString(queryParameters);
 
             var rawPageData = _requestHelper.Get(builder.Uri, _dataClass).GetAwaiter().GetResult();
-            var pageData = (IPageData<TU>)rawPageData;
+            var pageData = (IPageData<T>)rawPageData;
             var results = pageData.GetResults();
 
             _total += results.Count;
@@ -73,7 +71,7 @@ namespace Uploadcare.Utils
         {
         }
 
-        public T Current => _dataWrapper.Wrap(_pageIterator.Current);
+        public T Current => _pageIterator.Current;
 
         object IEnumerator.Current => Current;
 

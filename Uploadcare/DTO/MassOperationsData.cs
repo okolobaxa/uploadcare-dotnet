@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using Uploadcare.Models;
 
 namespace Uploadcare.DTO
 {
     internal class MassOperationsData
     {
-        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public string Status { get; set; }
 
-        [JsonProperty("problems")]
+        [JsonPropertyName("problems")]
         public Dictionary<string, string> Problems { get; set; }
 
-        [JsonProperty("result")]
-        public List<FileData> Files { get; set; }
+        [JsonPropertyName("result")]
+        public List<UploadcareFile> Files { get; set; }
     }
 }

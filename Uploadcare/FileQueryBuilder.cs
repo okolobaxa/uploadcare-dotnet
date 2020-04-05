@@ -83,7 +83,7 @@ namespace Uploadcare
         public FilesQueryBuilder OrderByUploadDate(DateTime? from = null)
         {
             _parameters.Add(new FileOrderingParameter(EFileOrderBy.DatetimeUploaded));
-            
+
             if (from.HasValue)
             {
                 _parameters.Add(new OrderingFromDateParameter(from.Value));
@@ -95,7 +95,7 @@ namespace Uploadcare
         public FilesQueryBuilder OrderByUploadDateDesc(DateTime? from = null)
         {
             _parameters.Add(new FileOrderingParameter(EFileOrderBy.DatetimeUploadedDesc));
-            
+
             if (from.HasValue)
             {
                 _parameters.Add(new OrderingFromDateParameter(from.Value));
@@ -132,7 +132,7 @@ namespace Uploadcare
         {
             var url = Urls.ApiFiles;
 
-            var result = _requestHelper.ExecutePaginatedQuery(url, _parameters, new FilePageData(), new FileDataWrapper());
+            var result = _requestHelper.ExecutePaginatedQuery<UploadcareFile, FilePageData>(url, _parameters, new FilePageData());
 
             return result;
         }

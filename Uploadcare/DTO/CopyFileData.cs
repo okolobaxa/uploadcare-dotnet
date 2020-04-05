@@ -1,22 +1,28 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Uploadcare.DTO
 {
     internal class BaseCopyFileData
     {
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     }
 
     internal class CopyFileData : BaseCopyFileData
     {
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public FileDataBase File { get; set; }
     }
 
     internal class CopyUrlData : BaseCopyFileData
     {
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public string Url { get; set; }
+    }
+
+    internal class FileDataBase
+    {
+        [JsonPropertyName("uuid")]
+        public string Uuid { get; set; }
     }
 }

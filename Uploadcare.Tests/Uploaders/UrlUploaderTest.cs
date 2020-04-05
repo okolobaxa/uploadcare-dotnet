@@ -16,7 +16,7 @@ namespace Uploadcare.Tests.Uploaders
             var uploader = new UrlUploader(client);
             var result = await uploader.Upload(URL);
 
-            Assert.NotNull(result.FileId);
+            Assert.NotNull(result.Uuid);
         }
     }
 }

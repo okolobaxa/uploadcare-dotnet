@@ -1,6 +1,8 @@
-﻿namespace Uploadcare.DTO
+﻿using Uploadcare.Models;
+
+namespace Uploadcare.DTO
 {
-    internal class GroupPageData : BasePageData<GroupData>
+    internal class GroupPageData : BasePageData<UploadcareGroup>
     {
     }
 }

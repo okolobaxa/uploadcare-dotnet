@@ -16,7 +16,7 @@ namespace Uploadcare.Tests.Utils
 		public void cdnpathbuilder_fileUrl_assert()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(FILE_ID);
+            fileMoq.Setup(x => x.Uuid).Returns(FILE_ID);
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 			var path = _builder.Build();
@@ -35,7 +35,7 @@ namespace Uploadcare.Tests.Utils
         public void cdnpathbuilder_allOperations_assert()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(FILE_ID);
+            fileMoq.Setup(x => x.Uuid).Returns(FILE_ID);
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 
@@ -47,7 +47,7 @@ namespace Uploadcare.Tests.Utils
         public void cdnpathbuilder_dimensionGuard_fail()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(FILE_ID);
+            fileMoq.Setup(x => x.Uuid).Returns(FILE_ID);
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 
@@ -75,7 +75,7 @@ namespace Uploadcare.Tests.Utils
         public void cdnpathbuilder_dimensionsGuard_fail()
 		{
             var fileMoq = new Mock<UploadcareFile>();
-            fileMoq.Setup(x => x.FileId).Returns(FILE_ID);
+            fileMoq.Setup(x => x.Uuid).Returns(FILE_ID);
 
             _builder = new CdnPathBuilder(fileMoq.Object);
 

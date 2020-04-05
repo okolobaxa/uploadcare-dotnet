@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Uploadcare.DTO
 {
     internal class UploadFromUrlData
     {
-        [JsonProperty("token")]
-        public string Token { get; private set; }
+        [JsonPropertyName("token")]
+        public string Token { get; set; }
     }
 }

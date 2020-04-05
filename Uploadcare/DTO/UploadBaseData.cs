@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Uploadcare.DTO
 {
     internal class UploadcareFileBaseData
     {
-        [JsonProperty("file")]
-        public string File { get; private set; }
+        [JsonPropertyName("file")]
+        public string File { get; set; }
     }
 }

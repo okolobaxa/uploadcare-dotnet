@@ -17,7 +17,7 @@ namespace Uploadcare.Tests.Uploaders
             var uploader = new SignedFileUploader(client, new TimeSpan(0, 0, 30));
             var result = await uploader.Upload(file);
 
-            Assert.NotNull(result.FileId);
+            Assert.NotNull(result.Uuid);
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Uploadcare.Tests.Uploaders
             var uploader = new SignedFileUploader(client, new TimeSpan(0, 0, 30));
             var result = await uploader.Upload(bytes, file.Name);
 
-            Assert.NotNull(result.FileId);
+            Assert.NotNull(result.Uuid);
         }
 	}
 }

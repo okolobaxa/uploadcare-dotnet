@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Uploadcare.DTO;
 using Uploadcare.Models;
 using Uploadcare.Utils;
 
@@ -18,9 +17,9 @@ namespace Uploadcare.Clients
         {
             var url = Urls.ApiProject;
 
-            var result = await _requestHelper.Get<ProjectData>(url, default);
+            var result = await _requestHelper.Get<UploadcareProject>(url, default);
 
-            return new UploadcareProject(result);
+            return result;
         }
     }
 }

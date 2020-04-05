@@ -1,29 +1,29 @@
 ﻿using System;
-using Uploadcare.DTO;
+using System.Text.Json.Serialization;
 
 namespace Uploadcare.Models
 {
     public class UploadcareWebhook
     {
-        private readonly WebhookData _webhookData;
-
-        internal UploadcareWebhook(WebhookData webhookData)
-        {
-            _webhookData = webhookData;
-        }
-
-        public int Id => _webhookData.Id;
-
-        public DateTime Created => _webhookData.Created;
-
-        public DateTime? Updated => _webhookData.Updated;
-
-        public string EventType => _webhookData.EventType;
-
-        public string TargetUrl => _webhookData.TargetUrl;
-
-        public int Project => _webhookData.Project;
-
-        public bool IsActive => _webhookData.IsActive;
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+        
+        [JsonPropertyName("created")]
+        public DateTime Created { get; set; }
+        
+        [JsonPropertyName("updated")]
+        public DateTime? Updated { get; set; }
+        
+        [JsonPropertyName("event")]
+        public string EventType { get; set; }
+        
+        [JsonPropertyName("target_url")]
+        public string TargetUrl { get; set; }
+        
+        [JsonPropertyName("project")]
+        public int Project { get; set; }
+        
+        [JsonPropertyName("is_active")]
+        public bool IsActive { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Uploadcare
         /// </param>
         public CdnPathBuilder(UploadcareFile uploadcareFile)
         {
-            _sb.Append(Urls.CdnFile(uploadcareFile.FileId));
+            _sb.Append(Urls.CdnFile(uploadcareFile.Uuid));
         }
 
         /// <summary>

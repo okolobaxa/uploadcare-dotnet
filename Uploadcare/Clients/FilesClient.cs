@@ -26,9 +26,9 @@ namespace Uploadcare.Clients
 
             var url = Urls.ApiFile(fileId);
 
-            var result = await _requestHelper.Get<FileData>(url, default);
+            var result = await _requestHelper.Get<UploadcareFile>(url, default);
 
-            return new UploadcareFile(result);
+            return result;
         }
 
         public async Task DeleteAsync(string fileId)
@@ -40,7 +40,7 @@ namespace Uploadcare.Clients
 
             var url = Urls.ApiFile(fileId);
 
-            await _requestHelper.Delete<string, FileData>(url, string.Empty);
+            await _requestHelper.Delete<string, UploadcareFile>(url, string.Empty);
         }
 
         public async Task<UploadcareFile> StoreAsync(string fileId)
@@ -52,9 +52,9 @@ namespace Uploadcare.Clients
 
             var url = Urls.ApiFileStorage(fileId);
 
-            var result = await _requestHelper.Post<FileData>(url);
+            var result = await _requestHelper.Post<UploadcareFile>(url);
 
-            return new UploadcareFile(result);
+            return result;
         }
 
         public async Task<string> CopyAsync(string source, bool store = false, bool makePublic = false)
@@ -123,9 +123,7 @@ namespace Uploadcare.Clients
 
             var result = await _requestHelper.Put<IReadOnlyCollection<string>, MassOperationsData>(url, fileIds);
 
-            var successfullyStoredFiles = result.Files.Select(file => new UploadcareFile(file));
-
-            return new Tuple<IEnumerable<UploadcareFile>, IReadOnlyDictionary<string, string>>(successfullyStoredFiles, result.Problems);
+            return new Tuple<IEnumerable<UploadcareFile>, IReadOnlyDictionary<string, string>>(result.Files, result.Problems);
         }
 
         public async Task<Tuple<IEnumerable<UploadcareFile>, IReadOnlyDictionary<string, string>>> DeleteAsync(IReadOnlyCollection<string> fileIds)
@@ -144,9 +142,7 @@ namespace Uploadcare.Clients
 
             var result = await _requestHelper.Delete<IReadOnlyCollection<string>, MassOperationsData>(url, fileIds);
 
-            var successfullyStoredFiles = result.Files.Select(file => new UploadcareFile(file));
-
-            return new Tuple<IEnumerable<UploadcareFile>, IReadOnlyDictionary<string, string>>(successfullyStoredFiles, result.Problems);
+            return new Tuple<IEnumerable<UploadcareFile>, IReadOnlyDictionary<string, string>>(result.Files, result.Problems);
         }
 
         public FilesQueryBuilder GetFiles()
