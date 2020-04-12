@@ -11,7 +11,7 @@ namespace Uploadcare.Models
         public string Id { get; set; }
 
         [JsonPropertyName("orientation")]
-        public int Orientation { get; set; }
+        public int? Orientation { get; set; }
 
         [JsonPropertyName("format")]
         public string Format { get; set; }
