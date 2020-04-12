@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="12.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="detectedfaces.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

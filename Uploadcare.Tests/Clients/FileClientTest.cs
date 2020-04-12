@@ -192,7 +192,7 @@ namespace Uploadcare.Tests.Clients
         public async Task client_detect_faces()
         {
             var client = UploadcareClient.DemoClientWithSignedAuth();
-            var file = new FileInfo("Lenna.png");
+            var file = new FileInfo("12.jpg");
 
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file, false);
