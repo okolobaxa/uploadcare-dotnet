@@ -11,7 +11,7 @@ namespace Uploadcare.Tests.Uploaders
         public async Task fileuploader_upload_assert()
         {
             var client = UploadcareClient.DemoClient();
-            var file = new FileInfo("12.jpg");
+            var file = new FileInfo("1.jpg");
 
             var uploader = new FileUploader(client);
             var result = await uploader.Upload(file);
