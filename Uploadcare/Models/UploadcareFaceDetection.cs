@@ -69,23 +69,23 @@ namespace Uploadcare.Models
     {
         public override List<UploadcareFace> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
+            if (reader.TokenType != JsonTokenType.StartArray)
+            {
+                throw new JsonException();
+            }
+
             var result = new List<UploadcareFace>();
 
-            JsonTokenType? prevTokenType = null;
+            var startDepth = reader.CurrentDepth;
 
-            while (true)
+            while (reader.Read())
             {
-                reader.Read();
-
-                if (reader.TokenType == JsonTokenType.EndArray && prevTokenType.HasValue && prevTokenType == JsonTokenType.EndArray)
+                switch (reader.TokenType)
                 {
-                    break;
-                }
-
-                if (reader.TokenType != JsonTokenType.StartArray)
-                {
-                    prevTokenType = reader.TokenType;
-                    continue;
+                    case JsonTokenType.EndArray when reader.CurrentDepth == startDepth:
+                        return result;
+                    case JsonTokenType.EndArray:
+                        continue;
                 }
 
                 var numbers = new int[4];
@@ -103,11 +103,9 @@ namespace Uploadcare.Models
 
                 var face = new UploadcareFace(numbers);
                 result.Add(face);
-
-                prevTokenType = reader.TokenType;
             }
 
-            return result;
+            throw new JsonException();
         }
 
         public override void Write(Utf8JsonWriter writer, List<UploadcareFace> value, JsonSerializerOptions options)
