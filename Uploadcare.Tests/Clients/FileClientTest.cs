@@ -192,14 +192,28 @@ namespace Uploadcare.Tests.Clients
         public async Task client_detect_faces()
         {
             var client = new UploadcareClient("e8e49b932d98e53748a3", "899a21a3aee6a7800859"); 
-            var file = new FileInfo("0.jpg");
+            var file = new FileInfo("2.jpg");
 
-            var uploader = new UrlUploader(client);
-            var uploadedFileInfo = await uploader.Upload("https://picsb.meshok.net/pics2/213351457.jpg", false);
+            var uploader = new FileUploader(client);
+            var uploadedFileInfo = await uploader.Upload(file, false);
 
             var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.Uuid);
 
             Assert.NotEmpty(faces);
+        }
+
+        [Fact]
+        public async Task client_detect_no_faces()
+        {
+            var client = new UploadcareClient("e8e49b932d98e53748a3", "899a21a3aee6a7800859"); 
+            var file = new FileInfo("0.jpg");
+
+            var uploader = new FileUploader(client);
+            var uploadedFileInfo = await uploader.Upload(file, false);
+
+            var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.Uuid);
+
+            Assert.Empty(faces);
         }
     }
 }
