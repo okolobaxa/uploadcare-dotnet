@@ -36,19 +36,20 @@ namespace Uploadcare.Tests.Clients
             var uploadedFileInfo = await uploader.Upload(file);
 
             await Task.Delay(5000);
+            var temp = Path.GetTempFileName();
 
             using (var stream = await client.Files.GetStreamAsync(uploadedFileInfo.Uuid))
-            using (var fileStream = File.Create("Lenna-new.png"))
+            using (var fileStream = File.Create(temp))
             {
                 await stream.CopyToAsync(fileStream);
             }
 
             var originalHash = HashHelper.GetFileHash("Lenna.png");
-            var copiedHash = HashHelper.GetFileHash("Lenna-new.png");
+            var copiedHash = HashHelper.GetFileHash(temp);
 
             Assert.Equal(copiedHash, originalHash);
 
-            File.Delete("Lenna-new.png");
+            File.Delete(temp);
         }
 
         [Fact]
