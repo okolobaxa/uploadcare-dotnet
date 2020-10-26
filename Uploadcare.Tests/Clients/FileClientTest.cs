@@ -35,6 +35,8 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
 
+            await Task.Delay(5000);
+
             using (var stream = await client.Files.GetStreamAsync(uploadedFileInfo.Uuid))
             using (var fileStream = File.Create("Lenna-new.png"))
             {
