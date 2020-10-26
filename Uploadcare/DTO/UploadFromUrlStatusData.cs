@@ -9,5 +9,8 @@ namespace Uploadcare.DTO
         
         [JsonPropertyName("file_id")]
         public string FileId { get; set; }
+
+        [JsonPropertyName("error")]
+        public string Error { get; set; }
     }
 }

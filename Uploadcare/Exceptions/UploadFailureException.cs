@@ -13,5 +13,10 @@ namespace Uploadcare.Exceptions
         {
 
         }
+
+        public UploadFailureException(string message) : base(message)
+        {
+
+        }
     }
 }

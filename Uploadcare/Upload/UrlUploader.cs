@@ -49,13 +49,14 @@ namespace Uploadcare.Upload
 
             var uploadData = await requestHelper.Get<UploadFromUrlData>(uploadUrl, default);
 
-            cts = new CancellationTokenSource();
+            using (cts = new CancellationTokenSource())
+            {
+                var task = Task.Run(() => PoolStatus(requestHelper, uploadData.Token, cts.Token), cts.Token);
 
-            var task = Task.Run(() => PoolStatus(requestHelper, uploadData.Token, cts.Token), cts.Token);
+                var statusData = task.Result;
 
-            var statusData = task.Result;
-
-            return await _client.Files.GetAsync(statusData.FileId);
+                return await _client.Files.GetAsync(statusData.FileId);
+            }
         }
 
         private async Task<UploadFromUrlStatusData> PoolStatus(RequestHelper requestHelper, string fileToken, CancellationToken cancellationToken)
@@ -75,7 +76,7 @@ namespace Uploadcare.Upload
 
                 if (data.Status.Equals("error") || data.Status.Equals("failed"))
                 {
-                    throw new UploadFailureException();
+                    throw new UploadFailureException(data.Error);
                 }
 
                 cancellationToken.ThrowIfCancellationRequested();

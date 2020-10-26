@@ -13,18 +13,18 @@ namespace Uploadcare.Utils
     internal class RequestHelper : IDisposable
     {
         private readonly IUploadcareConnection _connection;
-        private readonly HttpClient _httpClient;
+        internal readonly HttpClient HttpClient;
 
         internal RequestHelper(IUploadcareConnection connection)
         {
             _connection = connection;
-            _httpClient = new HttpClient();
+            HttpClient = new HttpClient();
 
-            _httpClient.DefaultRequestHeaders.Add("Accept", new[] { "application/vnd.uploadcare-v0.5+json" });
+            HttpClient.DefaultRequestHeaders.Add("Accept", new[] { "application/vnd.uploadcare-v0.5+json" });
 
             if (connection.AuthType == UploadcareAuthType.Simple)
             {
-                _httpClient.DefaultRequestHeaders.Add("Authorization", AuthHeaderHelper.GetSimple(_connection.PublicKey, _connection.PrivateKey));
+                HttpClient.DefaultRequestHeaders.Add("Authorization", AuthHeaderHelper.GetSimple(_connection.PublicKey, _connection.PrivateKey));
             }
         }
 
@@ -48,7 +48,7 @@ namespace Uploadcare.Utils
                 Content = requestContent
             };
 
-            var responseMessage = await _httpClient.SendAsync(httpRequestMessage);
+            var responseMessage = await HttpClient.SendAsync(httpRequestMessage);
 
             await CheckResponseStatus(responseMessage);
 
@@ -148,7 +148,7 @@ namespace Uploadcare.Utils
                     httpRequestMessage.Headers.Add("Authorization", AuthHeaderHelper.GetSigned(_connection.PublicKey, signature));
                 }
 
-                var responseMessage = await _httpClient.SendAsync(httpRequestMessage);
+                var responseMessage = await HttpClient.SendAsync(httpRequestMessage);
 
                 await CheckResponseStatus(responseMessage);
 
@@ -215,7 +215,7 @@ namespace Uploadcare.Utils
 
         public void Dispose()
         {
-            _httpClient?.Dispose();
+            HttpClient?.Dispose();
         }
     }
 }

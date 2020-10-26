@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Uploadcare.DTO;
@@ -29,6 +30,13 @@ namespace Uploadcare.Clients
             var result = await _requestHelper.Get<UploadcareFile>(url, default);
 
             return result;
+        }
+
+        public async Task<Stream> GetStreamAsync(string fileId)
+        {
+            var result = await GetAsync(fileId);
+
+            return await _requestHelper.HttpClient.GetStreamAsync(result.OriginalFileUrl);
         }
 
         public async Task DeleteAsync(string fileId)

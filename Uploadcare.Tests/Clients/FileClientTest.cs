@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
+using Uploadcare.Tests.Helpers;
 using Uploadcare.Upload;
 using Xunit;
 
@@ -21,6 +24,29 @@ namespace Uploadcare.Tests.Clients
             var result = await client.Files.GetAsync(uploadedFileInfo.Uuid);
 
             Assert.NotNull(result.Uuid);
+        }
+
+        [Fact]
+        public async Task client_getfileasstream_assert()
+        {
+            var client = UploadcareClient.DemoClientWithSignedAuth();
+            var file = new FileInfo("Lenna.png");
+
+            var uploader = new FileUploader(client);
+            var uploadedFileInfo = await uploader.Upload(file);
+
+            using (var stream = await client.Files.GetStreamAsync(uploadedFileInfo.Uuid))
+            using (var fileStream = File.Create("Lenna-new.png"))
+            {
+                await stream.CopyToAsync(fileStream);
+            }
+
+            var originalHash = HashHelper.GetFileHash("Lenna.png");
+            var copiedHash = HashHelper.GetFileHash("Lenna-new.png");
+
+            Assert.Equal(copiedHash, originalHash);
+
+            File.Delete("Lenna-new.png");
         }
 
         [Fact]

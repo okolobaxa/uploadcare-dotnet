@@ -6,7 +6,7 @@ namespace Uploadcare.Tests.Uploaders
 {
     public class UrlUploaderTest
     {
-        private const string URL = "https://upload.wikimedia.org/wikipedia/ru/2/24/Lenna.png";
+        private const string URL = "https://upload.wikimedia.org/wikipedia/en/7/7d/Lenna_%28test_image%29.png";
 
         [Fact]
         public async Task urluploader_upload_assert()

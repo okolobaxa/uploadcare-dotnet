@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Uploadcare.Models;
 
@@ -13,6 +14,13 @@ namespace Uploadcare.Clients
         /// <param name="fileId"> File UUID </param>
         /// <returns> File resource </returns>
         Task<UploadcareFile> GetAsync(string fileId);
+
+        /// <summary>
+        /// Requests file data as Stream
+        /// </summary>
+        /// <param name="fileId"> File UUID </param>
+        /// <returns> File resource </returns>
+        Task<Stream> GetStreamAsync(string fileId);
 
         /// <summary>
         /// Marks a file as deleted.
