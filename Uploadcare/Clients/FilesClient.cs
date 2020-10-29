@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Uploadcare.DTO;
 using Uploadcare.Models;
@@ -36,7 +37,18 @@ namespace Uploadcare.Clients
         {
             var result = await GetAsync(fileId);
 
-            return await _requestHelper.HttpClient.GetStreamAsync(result.OriginalFileUrl);
+            var client = _requestHelper.HttpClient;
+
+            //We want to utilize same instance of HttpClient, but for cdn operations (like download) we should not pass any auth headers
+
+            var authHeaderValue = client.DefaultRequestHeaders.Authorization;
+            client.DefaultRequestHeaders.Remove("Authorization");
+
+            var stream = await client.GetStreamAsync(result.OriginalFileUrl);
+
+            client.DefaultRequestHeaders.Authorization = authHeaderValue;
+
+            return stream;
         }
 
         public async Task DeleteAsync(string fileId)

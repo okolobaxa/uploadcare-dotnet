@@ -21,6 +21,8 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
 
+            await Task.Delay(5000);
+
             var result = await client.Files.GetAsync(uploadedFileInfo.Uuid);
 
             Assert.NotNull(result.Uuid);
@@ -37,18 +39,20 @@ namespace Uploadcare.Tests.Clients
 
             await Task.Delay(5000);
 
+            var temp = Path.GetTempFileName();
+
             using (var stream = await client.Files.GetStreamAsync(uploadedFileInfo.Uuid))
-            using (var fileStream = File.Create("Lenna-new.png"))
+            using (var fileStream = File.Create(temp))
             {
                 await stream.CopyToAsync(fileStream);
             }
 
             var originalHash = HashHelper.GetFileHash("Lenna.png");
-            var copiedHash = HashHelper.GetFileHash("Lenna-new.png");
+            var copiedHash = HashHelper.GetFileHash(temp);
 
             Assert.Equal(copiedHash, originalHash);
 
-            File.Delete("Lenna-new.png");
+            File.Delete(temp);
         }
 
         [Fact]
@@ -59,6 +63,8 @@ namespace Uploadcare.Tests.Clients
 
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
+
+            await Task.Delay(5000);
 
             var result = await client.Files.StoreAsync(uploadedFileInfo.Uuid);
 
@@ -74,6 +80,8 @@ namespace Uploadcare.Tests.Clients
 
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file);
+
+            await Task.Delay(5000);
 
             await client.Files.DeleteAsync(uploadedFileInfo.Uuid);
             var result = await client.Files.GetAsync(uploadedFileInfo.Uuid);
@@ -158,7 +166,7 @@ namespace Uploadcare.Tests.Clients
 
             var uploader = new FileUploader(client);
 
-            var uploadedFileInfo = uploader.Upload(file).GetAwaiter().GetResult();
+            var uploadedFileInfo = await uploader.Upload(file);
 
             //We have to wait end of file processing in Uploadcare backend for copy it
             if (!uploadedFileInfo.IsReady)
@@ -187,6 +195,8 @@ namespace Uploadcare.Tests.Clients
             var uploadedFileInfo2 = await uploader.Upload(file, false);
             var badFileId = "4j334o01-8bs3";
 
+            await Task.Delay(5000);
+
             var fileIds = new[] { uploadedFileInfo1.Uuid, uploadedFileInfo2.Uuid, badFileId };
 
             var (files, problems) = await client.Files.StoreAsync(fileIds.ToList());
@@ -207,6 +217,8 @@ namespace Uploadcare.Tests.Clients
             var uploadedFileInfo2 = await uploader.Upload(file, false);
             var badFileId = "4j334o01-8bs3";
 
+            await Task.Delay(5000);
+
             var fileIds = new[] { uploadedFileInfo1.Uuid, uploadedFileInfo2.Uuid, badFileId };
 
             var (files, problems) = await client.Files.DeleteAsync(fileIds.ToList());
@@ -225,6 +237,8 @@ namespace Uploadcare.Tests.Clients
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file, false);
 
+            await Task.Delay(5000);
+
             var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.Uuid);
 
             Assert.NotEmpty(faces);
@@ -238,6 +252,8 @@ namespace Uploadcare.Tests.Clients
 
             var uploader = new FileUploader(client);
             var uploadedFileInfo = await uploader.Upload(file, false);
+
+            await Task.Delay(5000);
 
             var faces = await client.FaceDetection.DetectFaces(uploadedFileInfo.Uuid);
 
