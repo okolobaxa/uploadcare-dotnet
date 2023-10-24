@@ -39,7 +39,7 @@ namespace Uploadcare.Upload
         /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
         /// <returns> An Uploadcare file </returns>
         /// <exception cref="UploadFailureException"> </exception>
-        public Task<UploadcareFile> Upload(byte[] bytes, string filename, bool? store = null)
+        public Task<UploadcareFile> Upload(byte[] bytes, string filename, string contentType, bool? store = null)
         {
             if (string.IsNullOrEmpty(filename))
             {
@@ -48,7 +48,7 @@ namespace Uploadcare.Upload
 
             var content = new ByteArrayContent(bytes);
 
-            return UploadInternal(content, filename, store);
+            return UploadInternal(content, filename, contentType, store);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Uploadcare.Upload
         /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
         /// <returns> An Uploadcare file </returns>
         /// <exception cref="UploadFailureException"> </exception>
-        public Task<UploadcareFile> Upload(FileInfo fileInfo, bool? store = null)
+        public Task<UploadcareFile> Upload(FileInfo fileInfo, string contentType, bool? store = null)
         {
             if (fileInfo == null)
             {
@@ -67,11 +67,16 @@ namespace Uploadcare.Upload
 
             var content = new StreamContent(File.OpenRead(fileInfo.FullName));
 
-            return UploadInternal(content, fileInfo.FullName, store);
+            return UploadInternal(content, fileInfo.FullName, contentType, store);
         }
 
-        private async Task<UploadcareFile> UploadInternal(HttpContent binaryContent, string filename, bool? store = null)
+        private async Task<UploadcareFile> UploadInternal(HttpContent binaryContent, string filename, string contentType, bool? store = null)
         {
+            if (!string.IsNullOrEmpty(contentType))
+            {
+                binaryContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
+            }
+
             var url = Urls.UploadBase;
 
             try
