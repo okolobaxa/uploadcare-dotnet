@@ -39,7 +39,53 @@ namespace Uploadcare.Upload
         /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
         /// <returns> An Uploadcare file </returns>
         /// <exception cref="UploadFailureException"> </exception>
+        public Task<UploadcareFile> Upload(byte[] bytes, string filename, bool? store = null)
+        {
+            return UploadBytes(bytes, filename, null, store);
+        }
+
+        /// <summary>
+        /// Uploads the file to Uploadcare.
+        /// </summary>
+        /// <param name="bytes">File binary data</param>
+        /// <param name="filename">File name</param>
+        /// <param name="contentType">Content type</param>
+        /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
+        /// <returns> An Uploadcare file </returns>
+        /// <exception cref="UploadFailureException"> </exception>
+
         public Task<UploadcareFile> Upload(byte[] bytes, string filename, string contentType, bool? store = null)
+        {
+            return UploadBytes(bytes, filename, contentType, store);
+        }
+
+        /// <summary>
+        /// Uploads the file to Uploadcare.
+        /// </summary>
+        /// <param name="fileInfo">File information</param>
+        /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
+        /// <returns> An Uploadcare file </returns>
+        /// <exception cref="UploadFailureException"> </exception>
+        public Task<UploadcareFile> Upload(FileInfo fileInfo, bool? store = null)
+        {
+            return UploadFileInfo(fileInfo, null, store);
+        }
+
+        /// <summary>
+        /// Uploads the file to Uploadcare.
+        /// </summary>
+        /// <param name="fileInfo">File information</param>
+        /// <param name="contentType">Content type</param>
+        /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
+        /// <returns> An Uploadcare file </returns>
+        /// <exception cref="UploadFailureException"> </exception>
+
+        public Task<UploadcareFile> Upload(FileInfo fileInfo, string contentType, bool? store = null)
+        {
+            return UploadFileInfo(fileInfo, contentType, store);
+        }
+
+        private Task<UploadcareFile> UploadBytes(byte[] bytes, string filename, string contentType, bool? store = null)
         {
             if (string.IsNullOrEmpty(filename))
             {
@@ -51,14 +97,7 @@ namespace Uploadcare.Upload
             return UploadInternal(content, filename, contentType, store);
         }
 
-        /// <summary>
-        /// Uploads the file to Uploadcare.
-        /// </summary>
-        /// <param name="bytes">File information</param>
-        /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
-        /// <returns> An Uploadcare file </returns>
-        /// <exception cref="UploadFailureException"> </exception>
-        public Task<UploadcareFile> Upload(FileInfo fileInfo, string contentType, bool? store = null)
+        private Task<UploadcareFile> UploadFileInfo(FileInfo fileInfo, string contentType, bool? store = null)
         {
             if (fileInfo == null)
             {
