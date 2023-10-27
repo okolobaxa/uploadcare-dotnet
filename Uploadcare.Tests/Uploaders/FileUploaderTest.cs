@@ -31,5 +31,5 @@ namespace Uploadcare.Tests.Uploaders
 
             Assert.NotNull(result.Uuid);
         }
-	}
+    }
 }

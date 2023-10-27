@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MimeTypes;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
@@ -29,6 +30,29 @@ namespace Uploadcare.Upload
         public FileUploader(IUploadcareClient client)
         {
             Client = (UploadcareClient)client;
+        }
+
+
+        /// <summary>
+        /// Uploads the file to Uploadcare.
+        /// </summary>
+        /// <param name="bytes">File binary data</param>
+        /// <param name="filename">File name</param>
+        /// <param name="contentType">Content Type</param>
+        /// <param name="store">Sets the file storing behavior. In this context, storing a file means making it permanently available</param>
+        /// <returns> An Uploadcare file </returns>
+        /// <exception cref="UploadFailureException"> </exception>
+        public Task<UploadcareFile> Upload(byte[] bytes, string filename, string contentType, bool? store = null)
+        {
+            if (string.IsNullOrEmpty(filename))
+            {
+                throw new ArgumentNullException(nameof(filename));
+            }
+
+            var content = new ByteArrayContent(bytes);
+            AddContentType(content, contentType);
+
+            return UploadInternal(content, filename, store);
         }
 
         /// <summary>
@@ -66,6 +90,8 @@ namespace Uploadcare.Upload
             }
 
             var content = new StreamContent(File.OpenRead(fileInfo.FullName));
+            var contentType = MimeTypeMap.GetMimeType(fileInfo.Extension.Trim('.').ToLower());
+            AddContentType(content, contentType);
 
             return UploadInternal(content, fileInfo.FullName, store);
         }
@@ -103,6 +129,14 @@ namespace Uploadcare.Upload
             catch (Exception e)
             {
                 throw new UploadFailureException(e);
+            }
+        }
+
+        private void AddContentType(HttpContent binaryContent, string contentType)
+        {
+            if (!string.IsNullOrWhiteSpace(contentType))
+            {
+                binaryContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
             }
         }
 
